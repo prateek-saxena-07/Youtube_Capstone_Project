@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 const VideoFilter = () => {
     
     return (<>
-        <ButtonGroup pl={10}>
+        <ButtonGroup pl={6}>
             <Button>
                 All
             </Button>

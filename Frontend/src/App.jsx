@@ -20,16 +20,16 @@ const App = () => {
   color='blackAlpha.700'
   fontWeight='bold'
 >
-  <GridItem pl={2} bg='orange.300' area={'header'}>
+  <GridItem pl={2} area={'header'}>
         <Header bars={bars} setBars={setBars} />
   </GridItem>
-  <GridItem pl='2' bg='pink.300' area={'sidebar'}>
+  <GridItem pl='2' area={'sidebar'}>
         <Sidebar bars={bars} />
   </GridItem>
-  <GridItem pl='2' bg='green.300' area={'filter'}>
+  <GridItem pl='2'  area={'filter'}>
     <VideoFilter/>
   </GridItem>
-  <GridItem pl='2' bg="blue" area={'grid'}>
+  <GridItem pl='2'  area={'grid'}>
     <VideoGrid/>
   </GridItem>
     </Grid>

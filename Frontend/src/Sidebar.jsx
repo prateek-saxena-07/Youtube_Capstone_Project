@@ -12,7 +12,7 @@ const Sidebar = ({bars}) =>
                 <FontAwesomeIcon icon={faHouse} />
                 Home
             </Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Compass</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
                 <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
                 <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
                 <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
@@ -26,16 +26,16 @@ const Sidebar = ({bars}) =>
             <VStack>
             <Box>
                 <FontAwesomeIcon icon={faHouse} />
-                Home
+                
             </Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Compass</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faCompass} /></Box>
+                <Box><FontAwesomeIcon icon={faCompass} /></Box>
+                <Box><FontAwesomeIcon icon={faCompass} /></Box>
+                <Box><FontAwesomeIcon icon={faCompass} /></Box>
+            <Box><FontAwesomeIcon icon={faCompass} /></Box>
+            <Box><FontAwesomeIcon icon={faHouse} /></Box>
+            <Box><FontAwesomeIcon icon={faHouse} /></Box>
+            <Box><FontAwesomeIcon icon={faHouse} /></Box>
 
                 
             </VStack>

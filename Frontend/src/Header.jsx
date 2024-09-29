@@ -1,7 +1,7 @@
 import Search from './Search';
 import Logo from './Logo';
 import Signin from './Signin';
-import { Flex, Box ,Spacer} from '@chakra-ui/react';
+import { Flex, Box ,Spacer, Button} from '@chakra-ui/react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,16 +21,18 @@ const Header = ({bars,setBars}) => {
     return (
         <>
         <Flex m={2}>
-            <Box>
-                <FontAwesomeIcon icon={faBars} onClick={handleClickBars}/>
-            </Box>
-                 <Spacer/>
+            <Button onClick={handleClickBars}>
+                <FontAwesomeIcon icon={faBars} />
+            </Button>
+                <Spacer />
+                
             <Box>
                     <Logo></Logo>
             </Box>
                 <Spacer />
                 <Spacer />
-                <Spacer/>
+                <Spacer />
+                
             <Box width='55%'>
                     <Search></Search>
             </Box>
@@ -38,6 +40,10 @@ const Header = ({bars,setBars}) => {
                 <Spacer />
                 <Spacer />
                 <Spacer />
+                <Spacer />
+                <Spacer />
+                <Spacer/><Spacer/>
+                
             <Box>
                 <Signin></Signin>
             </Box>
