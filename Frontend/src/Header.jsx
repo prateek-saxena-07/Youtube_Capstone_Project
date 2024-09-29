@@ -1,19 +1,28 @@
-import Sidebar from './Sidebar';
 import Search from './Search';
 import Logo from './Logo';
 import Signin from './Signin';
 import { Flex, Box ,Spacer} from '@chakra-ui/react';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-
-const Header = () => {
-    
+const Header = ({bars,setBars}) => {
+    const handleClickBars = () =>
+    {
+        if (!bars)
+        {
+            setBars(true);
+        }
+        else
+        {
+            setBars(false);
+     }
+    }
     return (
         <>
         <Flex m={2}>
             <Box>
-                <Sidebar></Sidebar>
-            
+                <FontAwesomeIcon icon={faBars} onClick={handleClickBars}/>
             </Box>
                  <Spacer/>
             <Box>

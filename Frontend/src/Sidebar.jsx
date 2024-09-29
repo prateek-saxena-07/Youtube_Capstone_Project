@@ -1,11 +1,45 @@
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars,faHouse,faCompass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const Sidebar = () =>
+import { VStack,Box, Spacer } from '@chakra-ui/react';
+const Sidebar = ({bars}) =>
 {
     return (<>
-        <div className="hamburger">
-            <FontAwesomeIcon icon={faBars} />
-        </div>
+        <br />
+        <br />
+        <br />
+        {bars?<VStack>
+            <Box>
+                <FontAwesomeIcon icon={faHouse} />
+                Home
+            </Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Compass</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+        </VStack>
+        :
+        
+            <VStack>
+            <Box>
+                <FontAwesomeIcon icon={faHouse} />
+                Home
+            </Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Compass</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
+
+                
+            </VStack>
+        }
     </>)
 }
 export default Sidebar;
