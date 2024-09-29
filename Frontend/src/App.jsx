@@ -7,7 +7,6 @@ import VideoFilter from "./VideoFilter";
 const App=()=> {
   return (<>
     <Header></Header>
-  
     <VideoFilter></VideoFilter>
     <VideoGrid></VideoGrid>
   </>)

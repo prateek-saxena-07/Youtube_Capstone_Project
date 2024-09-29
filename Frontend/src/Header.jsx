@@ -10,7 +10,7 @@ const Header = () => {
     
     return (
         <>
-        <Flex>
+        <Flex m={2}>
             <Box>
                 <Sidebar></Sidebar>
             
@@ -22,9 +22,11 @@ const Header = () => {
                 <Spacer />
                 <Spacer />
                 <Spacer/>
-            <Box width='80%'>
+            <Box width='55%'>
                     <Search></Search>
             </Box>
+                <Spacer />
+                <Spacer />
                 <Spacer />
                 <Spacer />
             <Box>

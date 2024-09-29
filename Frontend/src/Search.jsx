@@ -5,8 +5,8 @@ const Search = () => {
     return (<>
         
         
-        <div className="search" >
-                    <input className="search-input" type="text" placeholder='Search' style={{width:'90%'}} />
+        <div className="search">
+                    <input className="search-input" type="text" placeholder='Search' style={{width:'92%'}} />
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </div>
     </>)

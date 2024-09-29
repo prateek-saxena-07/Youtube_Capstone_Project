@@ -1,7 +1,7 @@
 export default function Signin() {
     return (
         <>
-        <div className="signIn"><button>Sign In</button></div>
+        <div className="signin"><button>Sign In</button></div>
         </>
     )
 }
