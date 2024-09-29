@@ -1,6 +1,6 @@
 import Search from './Search';
 import Logo from './Logo';
-import Signin from './Signin';
+import Signin from './Signinbtn';
 import { Flex, Box ,Spacer, Button} from '@chakra-ui/react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

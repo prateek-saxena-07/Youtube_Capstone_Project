@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import VideoCard from './VideoCard.jsx';
-import videoData from "./utils/mockdata.js";
+import videoData from "../utils/mockdata.js";
 const VideoGrid = () => {
     
     return (<>

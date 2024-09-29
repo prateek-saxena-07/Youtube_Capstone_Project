@@ -1,14 +1,15 @@
-import VideoGrid from "./VideoGrid";
-import Header from "./Header";
-import VideoFilter from "./VideoFilter";
+import VideoGrid from "./components/VideoGrid";
+import Header from "./components/Header";
+import VideoFilter from "./components/VideoFilter";
 import { Grid,GridItem } from "@chakra-ui/react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./components/Sidebar";
 import { useState } from "react";
 
 
 const App = () => {
   const [bars, setBars] = useState(false);
   return (<>
+    
     {bars?<Grid
   templateAreas={`"header header"
                   "sidebar filter"
