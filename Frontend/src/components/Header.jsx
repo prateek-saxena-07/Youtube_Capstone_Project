@@ -4,6 +4,7 @@ import Signin from './Signinbtn';
 import { Flex, Box ,Spacer, Button} from '@chakra-ui/react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 
 const Header = ({bars,setBars}) => {
@@ -45,7 +46,7 @@ const Header = ({bars,setBars}) => {
                 <Spacer/><Spacer/>
                 
             <Box>
-                <Signin></Signin>
+                <Link to='/signup'><Signin></Signin></Link>
             </Box>
         </Flex>
         </>
