@@ -1,4 +1,14 @@
-import { useState } from "react"
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Text,
+  useToast,
+} from '@chakra-ui/react';
 
 export default function Login() {
     const [login, setLogin] = useState({username:'',password:''});
@@ -15,12 +25,16 @@ export default function Login() {
     }
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+                <form onSubmit={handleSubmit}>
                 
-                <label htmlFor="">Username</label><input name="username" type="text" onChange={handleChange} value={login.username} />
-                <label htmlFor="">Password</label><input type="password" onChange={handleChange} name="password" value={login.password} />
-                <input type="submit" />
-            </form>
+                    <Stack>
+                        <FormLabel htmlFor="">Username</FormLabel><Input name="username" type="text" onChange={handleChange} value={login.username} />
+                        <FormLabel htmlFor="">Password</FormLabel><Input type="password" onChange={handleChange} name="password" value={login.password} />
+                        <Button type="submit" colorScheme="teal">LogIn</Button>
+                    </Stack>
+                </form>
+            </Box>
         </>
     )
 }

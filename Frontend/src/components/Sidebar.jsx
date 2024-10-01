@@ -1,28 +1,9 @@
 import { faBars,faHouse,faCompass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { VStack,Box, Spacer } from '@chakra-ui/react';
-const Sidebar = ({bars}) =>
+const Sidebar = () =>
 {
     return (<>
-        <br />
-        <br />
-        <br />
-        {bars?<VStack>
-            <Box>
-                <FontAwesomeIcon icon={faHouse} />
-                Home
-            </Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
-            <Box><FontAwesomeIcon icon={faHouse} />Explore</Box>
-        </VStack>
-        :
-        
             <VStack>
             <Box>
                 <FontAwesomeIcon icon={faHouse} />
@@ -39,7 +20,7 @@ const Sidebar = ({bars}) =>
 
                 
             </VStack>
-        }
+        
     </>)
 }
 export default Sidebar;

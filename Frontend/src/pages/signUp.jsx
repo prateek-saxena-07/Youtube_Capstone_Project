@@ -1,9 +1,10 @@
 import { useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Box,Stack,FormLabel,FormControl,Input,Text,Button } from "@chakra-ui/react";
 
 
 const SignUp = () => {
-    
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -36,6 +37,8 @@ const SignUp = () => {
                 email: '',
                 password: ''
             });
+
+            navigate('/login')
         }
         
     catch (error) {
@@ -48,15 +51,18 @@ const SignUp = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="">Username:</label><input name="username" value={formData.username} onChange={handleChange} />
-                <label htmlFor="">Email:<input name="email" value={formData.email} onChange={handleChange}/></label>
-                <label htmlFor="">Password:<input type="password" name="password" value={formData.password} onChange={handleChange}/></label>
-                <input type="submit" value="SignUp" /><br />
-                <Link to='/login'><input type="button" value={"login"} /></Link>
-
-                
-           </form>
+            <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+                <form onSubmit={handleSubmit}>
+                    <Stack>
+                        <FormLabel htmlFor="">Username:</FormLabel><Input name="username" value={formData.username} onChange={handleChange} />
+                        <FormLabel htmlFor="">Email:<Input name="email" value={formData.email} onChange={handleChange}/></FormLabel>
+                        <FormLabel htmlFor="">Password:<Input type="password" name="password" value={formData.password} onChange={handleChange}/></FormLabel>
+                        <Button type="submit" colorScheme="teal">Submit</Button>
+                        <Link to='/login' ><Input type="button" value={"Login"} /></Link>
+                    </Stack>
+                    
+                           </form>
+            </Box>
         </>
     )
 }

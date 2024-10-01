@@ -7,22 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 
-const Header = ({bars,setBars}) => {
-    const handleClickBars = () =>
-    {
-        if (!bars)
-        {
-            setBars(true);
-        }
-        else
-        {
-            setBars(false);
-     }
-    }
+const Header = () => {
+  
+    
     return (
         <>
         <Flex m={2}>
-            <Button onClick={handleClickBars}>
+            <Button>
                 <FontAwesomeIcon icon={faBars} />
             </Button>
                 <Spacer />
