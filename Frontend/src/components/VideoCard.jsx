@@ -26,7 +26,7 @@ export default function VideoCard(props) {
                 ml={2}
       mb={6}        />
     
-    <Stack mt='6' spacing='3' maxWidth="170px">
+    <Stack mt='6' ml={4} spacing='3' maxWidth="200px">
     <Box >
       <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
         {title}
@@ -40,7 +40,8 @@ export default function VideoCard(props) {
       {views} &middot; {uploadDate}
       </Text>
               </Stack>
-              <Stack  ml={10} mb={8}>
+              <Spacer/>
+              <Stack mr={4} mb={12}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
     </Stack>
     </HStack>

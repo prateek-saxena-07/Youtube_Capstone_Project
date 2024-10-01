@@ -1,11 +1,13 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import VideoCard from './VideoCard.jsx';
-import videoData from "../utils/mockdata.js";
+import { useSelector } from 'react-redux';
+
 const VideoGrid = () => {
+    const videos = useSelector((state) => state.homeVideosGrid.videoData)    
     
     return (<>
-        <SimpleGrid minChildWidth='300px' spacing='40px' m={6}>
-            {videoData.map((video) => (<VideoCard props={video}></VideoCard>))}
+        <SimpleGrid minChildWidth='250px' spacing='10px' m={6}>
+            {videos.map((video) => (<VideoCard props={video} key={video.id}></VideoCard>))}
         </SimpleGrid>
     </>)
 }
