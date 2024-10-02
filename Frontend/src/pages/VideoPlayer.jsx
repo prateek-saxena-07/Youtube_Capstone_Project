@@ -1,5 +1,7 @@
 import Header from '../components/Header';
-import { Box, Grid, Text, Image, Flex } from "@chakra-ui/react";
+import { Box, Grid, Text, Image, Flex, Button } from "@chakra-ui/react";
+import { faThumbsUp,faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VideoPageLayout = () => {
   return (
@@ -27,12 +29,14 @@ const VideoPageLayout = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-          </Box>
+        </Box>
+        
           {/* Video Description */}
           <Box gridArea="description">
             <Text fontSize="2xl" fontWeight="bold">
               React JS Roadmap | Chat Over React Series
-            </Text>
+          </Text>
+          <Button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></Button><Button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon></Button>
             <Text fontSize="lg" color="gray.500">
               Published by: Awesome Coder
             </Text>
