@@ -5,6 +5,11 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    img: { type: String, default:'' },
+    subscribers: { type: Number, default: 0 },
+    channel_name: { type: String ,default:''},
+    handle:{type:String},
+
   },
   {
     timestamps: true,

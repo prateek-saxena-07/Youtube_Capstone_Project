@@ -3,8 +3,23 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VideoGrid from "../components/VideoGrid";
 import Header from "../components/Header";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+
 const Channel = () => {
+    const { currentUser } = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
+ if (!currentUser) {
+        // Redirect to home page
+        navigate('/');
+        return null; // Prevent rendering the rest of the component
+    }
+
+
     return (<>
+        
         <Header></Header>
         <VStack>
             <Box mb={8}  ml={10} mr={4}>
@@ -22,8 +37,8 @@ const Channel = () => {
                     <Box>
                         <VStack>
                             {/* Channel name,moto etc */}<Box>
-                            <Heading as='h2'>YeahMad</Heading>
-                        <Text>@yeahmadtv
+                                <Heading as='h2'>{currentUser.channel_name}</Heading>
+                        <Text>{currentUser.handle}
 •
 2.18M subscribers
 •

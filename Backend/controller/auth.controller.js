@@ -34,10 +34,12 @@ export const SignIn = async (req, res,next) => {
             return next(createError(400, 'Wrong Credentials !'));
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT);
-       const{password,...others}=user._doc
+
+        const { password, ...others } = user._doc
+        
         res.cookie("access_token", token, {
             httpOnly: true,
-            secure:true,
+            secure:false,
         }).status(200).json(others);
        
     }

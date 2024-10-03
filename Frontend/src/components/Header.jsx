@@ -5,11 +5,19 @@ import { Flex, Box ,Spacer, Button, Avatar} from '@chakra-ui/react';
 import { faBars, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { logout } from '../utils/userSlice';
+import ChannelModal from './ChannelModal';
 
 
 const Header = () => {
     const { currentUser } = useSelector(state => state.user);
+    // console.log(currentUser)
+    const dispatch=useDispatch()
+    const handleLogout = () => {
+        
+        dispatch(logout());
+    }
     
     return (
         <>
@@ -38,10 +46,12 @@ const Header = () => {
                 <Spacer/><Spacer/>
                 
             <Box>
-                    {currentUser ? <><FontAwesomeIcon icon={faUpload}/><Avatar></Avatar>Test</>
+                    {currentUser ? <><FontAwesomeIcon icon={faUpload} /><ChannelModal></ChannelModal>{currentUser.username}</>
                         :
                     <Link to='/signup'><Signin></Signin></Link>}
-            </Box>
+                </Box>
+                
+                <Button onClick={handleLogout}>Logout</Button>
         </Flex>
         </>
   );

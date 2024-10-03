@@ -1,0 +1,89 @@
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    Button,
+    Text,
+    Avatar,
+    FormLabel,
+    Input
+} from '@chakra-ui/react';
+import { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { loginSuccess } from '../utils/userSlice';
+
+
+const ChannelModal = () => {
+    const[channelData,setChannelData]=useState({channel_name:'',handle:''})
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { currentUser } = useSelector(state => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+    const handleChange = (e) => {
+        setChannelData({...channelData,[e.target.name]:e.target.value})
+        
+    }
+  const handleUpdates = async () => {
+    
+    try {
+      const response = await fetch(`http://localhost:5100/api/v1/user/${currentUser._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials:'include',
+        body: JSON.stringify(channelData),
+      });
+      const data = await response.json();
+      console.log(data);
+      dispatch(loginSuccess(data));
+      navigate('/channel');
+
+    }
+    catch (err) {
+      console.log(err);
+      }
+    }
+    return (
+    <>
+      <Avatar onClick={onOpen}></Avatar>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>How you'll appear</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+                      <form>
+                          <Avatar></Avatar>
+                          <FormLabel>
+                              Channel Name
+                          </FormLabel>    
+                          <Input name='channel_name' value={channelData.channel_name} type='text' onChange={handleChange} />
+
+                          <FormLabel>Handle</FormLabel>
+                            <Input name='handle' value={channelData.handle} type='text' onChange={handleChange}/>
+                          
+                          
+            </form>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost' onClick={handleUpdates}>Create channel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+}
+
+export default ChannelModal;
