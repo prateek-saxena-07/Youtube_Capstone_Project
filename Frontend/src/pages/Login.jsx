@@ -9,19 +9,45 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { loginStart,loginSuccess,loginFail } from "../utils/userSlice";
+import { useNavigate } from "react-router";
 
 export default function Login() {
     const [login, setLogin] = useState({username:'',password:''});
 
-
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setLogin({...login,[e.target.name]:e.target.value})
         
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(login);
+        dispatch(loginStart());
+
+        try {
+            const res = await fetch('http://localhost:5100/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(login),
+                credentials:'include',
+            });
+            const data = await res.json();
+            console.log(data);
+            dispatch(loginSuccess(data));
+            navigate('/');
+            
+        }
+        catch (err)
+        {
+            dispatch(loginFail());
+        }
+
+        
+        
     }
     return (
         <>

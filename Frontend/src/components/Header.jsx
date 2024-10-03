@@ -1,14 +1,15 @@
 import Search from './Search';
 import Logo from './Logo';
 import Signin from './Signinbtn';
-import { Flex, Box ,Spacer, Button} from '@chakra-ui/react';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Flex, Box ,Spacer, Button, Avatar} from '@chakra-ui/react';
+import { faBars, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 
 const Header = () => {
-  
+    const { currentUser } = useSelector(state => state.user);
     
     return (
         <>
@@ -37,7 +38,9 @@ const Header = () => {
                 <Spacer/><Spacer/>
                 
             <Box>
-                <Link to='/signup'><Signin></Signin></Link>
+                    {currentUser ? <><FontAwesomeIcon icon={faUpload}/><Avatar></Avatar>Test</>
+                        :
+                    <Link to='/signup'><Signin></Signin></Link>}
             </Box>
         </Flex>
         </>

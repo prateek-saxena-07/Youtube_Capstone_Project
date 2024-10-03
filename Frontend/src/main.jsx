@@ -6,10 +6,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {Provider} from 'react-redux';
-import appStore from './utils/appStore.js'
+import appStore ,{persistor} from './utils/appStore.js'
 import Login from './pages/Login.jsx'
 import VideoPlayer from './pages/VideoPlayer.jsx'
-import Channel from './pages/Channel.jsx'
+import Channel from './pages/Channel.jsx';
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 
@@ -41,13 +42,13 @@ const appRouter = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   
-  <ChakraProvider>
-    <Provider store={appStore}>
-       <RouterProvider router={appRouter}>
-    <StrictMode>
-      <App />
-    </StrictMode>
-      </RouterProvider>
-    </Provider>
-  </ChakraProvider>
+  <StrictMode>
+    <ChakraProvider>
+      <Provider store={appStore}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={appRouter} />
+        </PersistGate>
+      </Provider>
+    </ChakraProvider>
+  </StrictMode>
 )
