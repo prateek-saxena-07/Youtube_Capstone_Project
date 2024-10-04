@@ -2,7 +2,7 @@ import {Box, Card, CardBody,Stack,Text,Heading,Image, HStack, Spacer} from "@cha
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 export default function VideoCard(props) {
-    const { title, thumbnail, channel, views, uploadDate } = props.props
+    const { title, thumbnail, channel, views } = props.props
     return (
         <>
 <Card  boxShadow={'none'}>
@@ -37,7 +37,7 @@ export default function VideoCard(props) {
         {channel}
       </Text>
       <Text>
-      {views} &middot; {uploadDate}
+      {views+" views"} &middot; {'8 Days ago'}
       </Text>
               </Stack>
               <Spacer/>

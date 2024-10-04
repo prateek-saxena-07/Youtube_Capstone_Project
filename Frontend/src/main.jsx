@@ -29,7 +29,7 @@ const appRouter = createBrowserRouter([
     element:<Login></Login>
   },
   {
-    path: '/video',
+    path: '/video/:id',
     element:<VideoPlayer/>
   },
   {

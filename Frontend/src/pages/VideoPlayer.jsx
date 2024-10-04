@@ -2,8 +2,14 @@ import Header from '../components/Header';
 import { Box, Grid, Text, Image, Flex, Button } from "@chakra-ui/react";
 import { faThumbsUp,faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 const VideoPageLayout = () => {
+  const videos = useSelector((state) => state.homeVideosGrid.videoData);
+  const params = useParams();
+  const video = videos.data.filter(vid => vid._id === params.id);
+  console.log(video);
   return (
       <>
           <Header/>
@@ -23,7 +29,7 @@ const VideoPageLayout = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube-nocookie.com/embed/y8Yv4pnO7qc?rel=0&amp;controls=0&amp;showinfo=0"
+              src={video[0].videoUrl}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -34,11 +40,11 @@ const VideoPageLayout = () => {
           {/* Video Description */}
           <Box gridArea="description">
             <Text fontSize="2xl" fontWeight="bold">
-              React JS Roadmap | Chat Over React Series
+              {video[0].title}
           </Text>
           <Button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></Button><Button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon></Button>
             <Text fontSize="lg" color="gray.500">
-              Published by: Awesome Coder
+              {"Published by:"+video[0].channel}
             </Text>
             <Text mt={2}>
               Video description goes here. It provides detailed information about
@@ -52,12 +58,12 @@ const VideoPageLayout = () => {
               Comments
             </Text>
             <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
-              <Text fontWeight="bold">John Doe</Text>
-              <Text>This is an amazing video. I learned so much from it!</Text>
+            <Text fontWeight="bold" color='black'>{video[0].comments[0].user}</Text>
+            <Text color={'black'}>{video[0].comments[0].text}</Text>
             </Box>
             <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
-              <Text fontWeight="bold">Jane Smith</Text>
-              <Text>Great explanations, very helpful.</Text>
+              <Text fontWeight="bold" color={'black'}>Jane Smith</Text>
+              <Text color={'black'}>Great explanations, very helpful.</Text>
             </Box>
           </Box>
           {/* Right Section: Recommended Videos */}
