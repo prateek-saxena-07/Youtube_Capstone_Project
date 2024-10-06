@@ -2,9 +2,16 @@ import mongoose from "mongoose";
 
 const VideoSchema = new mongoose.Schema(
   {
-    title: {
+    userId: {
       type: String,
       required: true,
+    },
+    title: {
+      type: String,
+    
+    },
+    desc: {
+      type:String
     },
     videoUrl: {
       type: String,
@@ -24,17 +31,19 @@ const VideoSchema = new mongoose.Schema(
     },
     channel: {
       type: String,
-      required: true,
+    
     },
-    thumbnail: {
+    imgUrl: {
       type: String,
       required: true,
     },
-    comments: [{
-      user: { type: String },
-      text: { type: String },
-      userLogo: { type: String },
-    }],
+    comments: [
+      {
+        user: { type: String },
+        text: { type: String },
+        userLogo: { type: String },
+      },
+    ],
   },
   {
     timestamps: true,

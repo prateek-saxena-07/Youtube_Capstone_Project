@@ -44,7 +44,7 @@ const VideoPageLayout = () => {
           </Text>
           <Button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></Button><Button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon></Button>
             <Text fontSize="lg" color="gray.500">
-              {"Published by:"+video[0].channel}
+              {"Published by:"}
             </Text>
             <Text mt={2}>
               Video description goes here. It provides detailed information about
@@ -58,8 +58,8 @@ const VideoPageLayout = () => {
               Comments
             </Text>
             <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
-            <Text fontWeight="bold" color='black'>{video[0].comments[0].user}</Text>
-            <Text color={'black'}>{video[0].comments[0].text}</Text>
+            <Text fontWeight="bold" color='black'></Text>
+            <Text color={'black'}></Text>
             </Box>
             <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
               <Text fontWeight="bold" color={'black'}>Jane Smith</Text>

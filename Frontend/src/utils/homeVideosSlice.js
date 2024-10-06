@@ -10,6 +10,7 @@ const homeVideosSlice = createSlice({
     reducers: {
         setVideos(state, action) {
             state.videoData = action.payload;
+            console.log(state.videoData);
         }
     }
 });

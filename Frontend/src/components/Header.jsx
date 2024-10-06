@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux'
 import { logout } from '../utils/userSlice';
 import ChannelModal from './ChannelModal';
+import UploadModal from './UploadModal';
 
 
 const Header = () => {
@@ -46,7 +47,7 @@ const Header = () => {
                 <Spacer/><Spacer/>
                 
             <Box>
-                    {currentUser ? <><FontAwesomeIcon icon={faUpload} /><ChannelModal></ChannelModal>{currentUser.username}</>
+                    {currentUser ? <><UploadModal><FontAwesomeIcon icon={faUpload} /></UploadModal><ChannelModal></ChannelModal>{currentUser.username} </>
                         :
                     <Link to='/signup'><Signin></Signin></Link>}
                 </Box>

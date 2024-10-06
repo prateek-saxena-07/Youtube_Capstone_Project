@@ -2,13 +2,14 @@ import {Box, Card, CardBody,Stack,Text,Heading,Image, HStack, Spacer} from "@cha
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 export default function VideoCard(props) {
-    const { title, thumbnail, channel, views } = props.props
+  const { title, thumbnail, channel, views } = props.props
+  console.log(props.props)
     return (
         <>
 <Card  boxShadow={'none'}>
   <CardBody p={0}>
     <Image
-      src={thumbnail}
+      src={props.props.imgUrl}
       alt={title}
       borderRadius='lg'
       width={'100%'}
@@ -17,7 +18,7 @@ export default function VideoCard(props) {
             
     <HStack>
       <Image
-      src={thumbnail}
+      src={props.props.imgUrl}
       alt={title}
       borderRadius={'50%'}
       width={'40px'}

@@ -45,7 +45,7 @@ const VideoGrid = () => {
                 <VideoCard props={video} key={video.id}></VideoCard>
             </Link>))}
         </SimpleGrid>
-    </>)
+    </>);
 }
 
 export default VideoGrid;
