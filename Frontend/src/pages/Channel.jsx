@@ -1,21 +1,26 @@
 import { Grid,GridItem,ButtonGroup,Button,HStack,VStack,Image,Box ,Text,Heading, Tab, Tabs, TabList} from "@chakra-ui/react"
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VideoGrid from "../components/VideoGrid";
+import ChannelVideoGrid from "../components/ChannelVideoGrid";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 
 const Channel = () => {
     const { currentUser } = useSelector((state) => state.user);
+    const { videoData } = useSelector((state) => state.homeVideosGrid)
+    const params = useParams();
+    const videoArr = videoData || [];//for error debugging
+    console.log(typeof(videoData),videoData);
+    const currentUservideos = videoArr.filter(video => (params.id === video.userId));
     const navigate = useNavigate();
 
- if (!currentUser) {
-        // Redirect to home page
-        navigate('/');
-        return null; // Prevent rendering the rest of the component
-    }
+//  if (!currentUser) {
+//         // Redirect to home page
+//         navigate('/');
+//         return null; // Prevent rendering the rest of the component
+//     }
 
 
     return (<>
@@ -95,7 +100,7 @@ const Channel = () => {
         </Box>
         </VStack>
         <Box ml={6}>
-            <VideoGrid></VideoGrid>
+            <ChannelVideoGrid videos={currentUservideos}></ChannelVideoGrid>
         </Box>
             
 

@@ -3,11 +3,46 @@ import Header from "./components/Header";
 import VideoFilter from "./components/VideoFilter";
 import { Grid,GridItem } from "@chakra-ui/react";
 import Sidebar from "./components/Sidebar";
-import { useState } from "react";
+import { useState,useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setVideos } from "./utils/homeVideosSlice";
 
 
 const App = () => {
-  const [bars, setBars] = useState(false);
+    const [bars, setBars] = useState(false);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+    const videos = useSelector((state) => state.homeVideosGrid.videoData)
+  
+    useEffect(() => {
+        const fetchVideos = async () => {
+            
+            try {
+                const response = await fetch('http://localhost:5100/api/v1/temp/getVideos');
+                const data = await response.json();
+                console.log(data.data);
+              dispatch(setVideos(data.data));
+            }
+            catch (err) {
+                setError(err.message || 'failed to fetch Videos')
+            }
+            finally {
+                setLoading(false);
+            }
+
+        };
+        fetchVideos();
+    }, [dispatch]);
+
+     if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+  }
+
   return (<>
     
     <Grid
@@ -31,7 +66,7 @@ const App = () => {
     <VideoFilter/>
   </GridItem>
   <GridItem pl='0'  area={'grid'}>
-    <VideoGrid/>
+        <VideoGrid videos={videos} />
   </GridItem>
     </Grid>
 

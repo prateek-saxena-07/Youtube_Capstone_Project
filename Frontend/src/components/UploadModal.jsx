@@ -15,21 +15,23 @@ import {
   Progress,
 } from "@chakra-ui/react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import app from "../../firebase";
-import { useNavigate } from "react-router";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setVideos } from "../utils/homeVideosSlice";
+
 
 export default function uploadModal() {
-  const navigate = useNavigate();
-     const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const dispatch = useDispatch();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [img, setImg] = useState(undefined);
   const [video, setVideo] = useState(undefined);
   const [imgPerc, setImgPerc] = useState(0);
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState([]);
-
   // const [tags, setTags] = useState([]);
+
   const handleChange = e => {
     setInputs(prev => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -89,9 +91,19 @@ export default function uploadModal() {
       body: JSON.stringify(inputs)
     });
 
-    const data = await res.json();
-    // navigate(`/video/${data._id}`)
-    console.log(data);
+      const videosRes = await fetch("http://localhost:5100/api/v1/temp/getVideos");
+      const videosData = await videosRes.json();
+
+      // Dispatch the setVideos action with the new video data
+      dispatch(setVideos(videosData.data)); 
+
+
+
+      setImg(undefined);
+      setVideo(undefined);
+      setImgPerc(0);
+      setVideoPerc(0);
+      setInputs({});
     onClose();
     }
     catch (err)
@@ -104,7 +116,7 @@ export default function uploadModal() {
   }
   return (
     <>
-      <Button onClick={onOpen}>Upload Video</Button>
+      <FontAwesomeIcon icon={faUpload} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

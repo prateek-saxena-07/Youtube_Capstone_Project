@@ -8,8 +8,9 @@ import { useParams } from 'react-router';
 const VideoPageLayout = () => {
   const videos = useSelector((state) => state.homeVideosGrid.videoData);
   const params = useParams();
-  const video = videos.data.filter(vid => vid._id === params.id);
-  console.log(video);
+  console.log("videoplayer",videos);
+  const video = videos.filter(vid => vid._id === params.id);
+  
   return (
       <>
           <Header/>

@@ -1,4 +1,5 @@
 import Video from '../model/video.model.js'
+import { createError } from '../error.js';
 
 // export const addVideo=async (req, res) => {
 //     const { title, videoUrl,channel,thumbnail,likes,disLikes,comments,views } = req.body;
@@ -22,7 +23,7 @@ import Video from '../model/video.model.js'
     
 // }
 
-export const getVideo = async (req, res) => {
+export const getVideos = async (req, res) => {
     try {
         const vid = await Video.find({});
         res.status(200).json({ success:true,data: vid });
@@ -61,14 +62,17 @@ export const updateVideos = async (req, res, next) => {try {
   }
 } catch (err) {
   next(err);
-} };
+  }
+};
+
 export const deleteVideos = async (req, res, next) => { 
  try {
    const video = await Video.findById(req.params.id);
    if (!video) return next(createError(404, "Video not found!"));
    if (req.user.id === video.userId) {
      await Video.findByIdAndDelete(req.params.id);
-     res.status(200).json("The video has been deleted.");
+     const userVideos = await Video.find({ userId: req.user.id });
+     res.status(200).json({message:"The video has been deleted.", data: userVideos});
    } else {
      return next(createError(403, "You can delete only your video!"));
    }
@@ -76,7 +80,7 @@ export const deleteVideos = async (req, res, next) => {
    next(err);
  }
 };
- export const getVideos = async (req, res, next) => { try {
+ export const getVideo = async (req, res, next) => { try {
    const video = await Video.findById(req.params.id);
    res.status(200).json(video);
  } catch (err) {

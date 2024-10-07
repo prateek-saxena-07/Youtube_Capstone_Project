@@ -1,16 +1,17 @@
 import {Box, Card, CardBody,Stack,Text,Heading,Image, HStack, Spacer} from "@chakra-ui/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+
 export default function VideoCard(props) {
-  const { title, thumbnail, channel, views } = props.props
-  console.log(props.props)
+ 
+  
     return (
         <>
 <Card  boxShadow={'none'}>
   <CardBody p={0}>
     <Image
       src={props.props.imgUrl}
-      alt={title}
+      alt={props.props.title}
       borderRadius='lg'
       width={'100%'}
       height={"170px"}
@@ -19,7 +20,7 @@ export default function VideoCard(props) {
     <HStack>
       <Image
       src={props.props.imgUrl}
-      alt={title}
+      alt={props.props.title}
       borderRadius={'50%'}
       width={'40px'}
       height={"40px"}
@@ -30,15 +31,15 @@ export default function VideoCard(props) {
     <Stack mt='6' ml={4} spacing='3' maxWidth="200px">
     <Box >
       <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
-        {title}
+        {props.props.title}
       </Text>
     </Box>
       
       <Text color='blue.600' fontSize='l'>
-        {channel}
+        {props.props.channel}
       </Text>
       <Text>
-      {views+" views"} &middot; {'8 Days ago'}
+      {props.props.views+" views"} &middot; {'8 Days ago'}
       </Text>
               </Stack>
               <Spacer/>

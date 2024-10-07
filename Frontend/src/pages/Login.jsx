@@ -37,8 +37,11 @@ export default function Login() {
             });
             const data = await res.json();
             console.log(data);
-            dispatch(loginSuccess(data));
-            navigate('/');
+            if (!res.ok)
+                alert('Invalid user or wrong Credentials');
+            else{dispatch(loginSuccess(data));
+            navigate('/');}
+            
             
         }
         catch (err)
