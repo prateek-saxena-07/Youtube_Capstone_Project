@@ -30,12 +30,13 @@ export default function VideoDeleteModal({videoId}) {
         )
       const data = await response.json();
       dispatch(setVideos(data.data));
-      console.log(data);
+      console.log('data.data', data.data);
+      console.log('data',data)
       onClose();
       
     }
-    catch {
-      console.log('Error')
+    catch(err) {
+      console.log(err)
     }
 }
 

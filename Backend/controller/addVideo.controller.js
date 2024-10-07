@@ -56,7 +56,10 @@ export const updateVideos = async (req, res, next) => {try {
       },
       { new: true }
     );
-    res.status(200).json(updatedVideo);
+    const userVideos = await Video.find({ userId: req.user.id });
+    res
+      .status(200)
+      .json({ message: "The video has been Updated.", data: userVideos });
   } else {
     return next(createError(403, "You can update only your video!"));
   }

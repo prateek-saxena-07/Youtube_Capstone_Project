@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/getVideos', getVideos);
 // =============================================
 router.post("/", verifyToken, addVideos);
-router.put('/:id',verifyToken, updateVideos);
+router.patch('/:id',verifyToken, updateVideos);
 router.delete("/:id", verifyToken, deleteVideos);
 router.get("/find/:id", getVideo);//:id video._id
 export default router;
