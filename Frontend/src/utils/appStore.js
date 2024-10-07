@@ -1,6 +1,6 @@
-import { configureStore,combineReducers } from '@reduxjs/toolkit';
-import homeVideosGridReducer from './homeVideosSlice.js';
-import userReducer from './userSlice.js';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import homeVideosGridReducer from "./homeVideosSlice.js";
+import userReducer from "./userSlice.js";
 import {
   persistStore,
   persistReducer,
@@ -11,18 +11,23 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storageSession from "redux-persist/lib/storage/session"; // Use sessionStorage
 
-
+// Persist config for sessionStorage
 const persistConfig = {
   key: "root",
   version: 1,
-  storage,
+  storage: storageSession, // Use session storage instead of local storage
 };
-const rootReducer = combineReducers({ user: userReducer,homeVideosGrid:homeVideosGridReducer });
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  homeVideosGrid: homeVideosGridReducer,
+});
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const appStore = configureStore({
-  //Slices Go here
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -31,6 +36,7 @@ const appStore = configureStore({
       },
     }),
 });
+
 export const persistor = persistStore(appStore);
 
 export default appStore;

@@ -47,12 +47,12 @@ const Header = () => {
                 <Spacer/><Spacer/>
                 
             <Box>
-                    {currentUser ? <><UploadModal><FontAwesomeIcon icon={faUpload} /></UploadModal><ChannelModal></ChannelModal>{currentUser.username} </>
+                    {currentUser ? <><UploadModal><FontAwesomeIcon icon={faUpload} /></UploadModal><ChannelModal></ChannelModal>{currentUser.username} <Button onClick={handleLogout}>Logout</Button></>
                         :
                     <Link to='/signup'><Signin></Signin></Link>}
                 </Box>
                 
-                <Button onClick={handleLogout}>Logout</Button>
+                
         </Flex>
         </>
   );
