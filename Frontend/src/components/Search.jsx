@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button } from '@chakra-ui/react';
 import { useState,useEffect } from 'react';
 
-const Search = ({ setSearchTerm }) => {
+const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
     const [inputValue, setInputValue] = useState(''); // Manage local input value
 
     const handleSearchClick = () => {
