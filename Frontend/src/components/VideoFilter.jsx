@@ -7,9 +7,7 @@ const VideoFilter = () => {
             <Button>
                 All
             </Button>
-            <Button>
-                Podcast
-            </Button>
+            
             <Button>Podcast</Button>
             <Button>Music</Button>
             <Button>News</Button>
