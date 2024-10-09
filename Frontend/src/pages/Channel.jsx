@@ -16,11 +16,11 @@ const Channel = () => {
     const currentUservideos = videoArr.filter(video => (params.id === video.userId));
     const navigate = useNavigate();
 
-//  if (!currentUser) {
-//         // Redirect to home page
-//         navigate('/');
-//         return null; // Prevent rendering the rest of the component
-//     }
+ if (!currentUser) {
+        // Redirect to home page
+        navigate('/');
+        return null; // Prevent rendering the rest of the component
+    }
 
 
     return (<>
