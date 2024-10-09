@@ -37,13 +37,6 @@ const VideoSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    comments: [
-      {
-        user: { type: String },
-        text: { type: String },
-        userLogo: { type: String },
-      },
-    ],
   },
   {
     timestamps: true,

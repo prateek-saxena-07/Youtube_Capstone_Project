@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import { Box, Grid, Text, Image, Flex, Button } from "@chakra-ui/react";
 import { faThumbsUp,faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
@@ -10,6 +11,18 @@ const VideoPageLayout = () => {
   const params = useParams();
   console.log("videoplayer",videos);
   const video = videos.filter(vid => vid._id === params.id);
+
+  useEffect(() => {
+  
+    const fetchComments = async () => {
+      const response = await fetch(`http://localhost:5100/api/v1/comments/${params.id}`);
+      const data = await response.json();
+      console.log(data);
+    }
+    fetchComments();
+
+})
+
   
   return (
       <>
