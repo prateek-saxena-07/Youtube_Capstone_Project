@@ -21,10 +21,10 @@ export default function VideoDeleteModal({videoId}) {
     try {
       const response = await fetch(`http://localhost:5100/api/v1/temp/${videoId}`, {
         method: 'DELETE',
-        headers: {
+       headers: {
                     'Content-Type': 'application/json',
         },
-        credentials:'include'
+        credentials:'include' 
       },
         
         )

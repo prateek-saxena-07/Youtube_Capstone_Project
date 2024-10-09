@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import Comments from '../components/Comments';
 
 const VideoPageLayout = () => {
   const videos = useSelector((state) => state.homeVideosGrid.videoData);
@@ -71,15 +72,8 @@ const VideoPageLayout = () => {
             <Text fontSize="xl" fontWeight="bold" mb={4}>
               Comments
             </Text>
-            <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
-            <Text fontWeight="bold" color='black'></Text>
-            <Text color={'black'}></Text>
+          <Comments videoId={params.id} />
             </Box>
-            <Box bg="gray.100" p={4} borderRadius="md" mb={4}>
-              <Text fontWeight="bold" color={'black'}>Jane Smith</Text>
-              <Text color={'black'}>Great explanations, very helpful.</Text>
-            </Box>
-          </Box>
           {/* Right Section: Recommended Videos */}
           <Box gridArea="recommendations">
             <Text fontSize="xl" fontWeight="bold" mb={4}>

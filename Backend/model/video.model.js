@@ -8,10 +8,9 @@ const VideoSchema = new mongoose.Schema(
     },
     title: {
       type: String,
-    
     },
     desc: {
-      type:String
+      type: String,
     },
     videoUrl: {
       type: String,
@@ -22,16 +21,15 @@ const VideoSchema = new mongoose.Schema(
       default: 0,
     },
     likes: {
-      type: Number,
-      default: 0,
+      type: [String],
+      default: [],
     },
-    disLikes: {
-      type: Number,
-      default: 0,
+    dislikes: {
+      type: [String],
+      default: [],
     },
     channel: {
       type: String,
-    
     },
     imgUrl: {
       type: String,

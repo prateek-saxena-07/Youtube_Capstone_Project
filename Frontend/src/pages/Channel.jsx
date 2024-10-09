@@ -15,6 +15,7 @@ const Channel = () => {
     console.log(typeof(videoData),videoData);
     const currentUservideos = videoArr.filter(video => (params.id === video.userId));
     const navigate = useNavigate();
+    console.log(currentUser)
 
  if (!currentUser) {
         // Redirect to home page
