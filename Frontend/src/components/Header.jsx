@@ -10,7 +10,7 @@ import { logout } from '../utils/userSlice';
 import ChannelModal from './ChannelModal';
 import UploadModal from './UploadModal';
 
-const Header = ({ searchTerm, setSearchTerm }) => { // Accept props
+const Header = ({setSearchTerm }) => { // Accept props
     const { currentUser } = useSelector(state => state.user);
     const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const Header = ({ searchTerm, setSearchTerm }) => { // Accept props
                 <Spacer />
                 <Spacer />
                 <Box width='55%'>
-                    <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> {/* Pass props to Search */}
+                    <Search  setSearchTerm={setSearchTerm} /> {/* Pass props to Search */}
                 </Box>
                 <Spacer />
                 <Spacer />

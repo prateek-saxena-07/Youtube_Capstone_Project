@@ -12,12 +12,38 @@ const App = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState(""); // State for search term
+    const [activeFilter, setActiveFilter] = useState("all");
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.homeVideosGrid.videoData);
     console.log(videos);
-    const SearchedItems = videos.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // const SearchedItems = videos.filter((item) =>
+    //     item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
+    console.log(activeFilter)
+    const getFilteredItems = (videos) => {
+    // If the active filter is 'all', return all videos
+    if (activeFilter.toLowerCase() === 'all') {
+        return videos;
+    }
+
+    // Otherwise, filter videos by tags
+    return videos.filter((item) => item.tags.includes(activeFilter));
+    };
+    
+
+ const FinalVideos = videos.filter((item) => {
+        // First, filter videos based on search term (or show all videos if search is empty)
+        const isSearchMatch = searchTerm
+            ? item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            : true; // If searchTerm is empty, all videos match
+
+        // Then, apply any active filters (or all if "all" is selected)
+        const filteredItems = getFilteredItems([item]);
+
+        return isSearchMatch && filteredItems.length > 0;
+    });
+
+
     useEffect(() => {
         const fetchVideos = async () => {
             try {
@@ -41,11 +67,11 @@ const App = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
-  console.log(searchTerm);
+//   console.log(searchTerm);
 
     return (
         <>
-            <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
+            <Header setSearchTerm={setSearchTerm} /> 
             <Grid
                 templateAreas={`
                     "sidebar filter"
@@ -64,10 +90,10 @@ const App = () => {
                     <Sidebar />
                 </GridItem>
                 <GridItem pl='0' area={'filter'}>
-                    <VideoFilter />
+                    <VideoFilter setFilter={setActiveFilter} />
                 </GridItem>
                 <GridItem pl='0' area={'grid'}>
-                    <VideoGrid videos={SearchedItems} />
+                    <VideoGrid videos={FinalVideos} />
                 </GridItem>
             </Grid>
         </>
