@@ -17,7 +17,9 @@ const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
 
     return (
         <>
-            <Box className="search" mt={0.5} onClick={handleSearchClick}>
+            <Box className="search" mt={0.5} onClick={handleSearchClick}  display="flex" 
+                alignItems="center" 
+                width="100%">
                 <input
                     className="search-input"
                     type="text"

@@ -1,6 +1,7 @@
 import {Box, Card, CardBody,Stack,Text,Heading,Image, HStack, Spacer} from "@chakra-ui/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import { format } from "timeago.js";
 
 export default function VideoCard(props) {
  
@@ -39,7 +40,7 @@ export default function VideoCard(props) {
         {props.props.channel}
       </Text>
       <Text>
-      {props.props.views+" views"} &middot; {'8 Days ago'}
+      {props.props.views+" views"} &middot; {format(props.props.createdAt)}
       </Text>
               </Stack>
               <Spacer/>

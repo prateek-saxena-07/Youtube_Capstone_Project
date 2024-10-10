@@ -11,11 +11,16 @@ const Channel = () => {
     const { currentUser } = useSelector((state) => state.user);
     const { videoData } = useSelector((state) => state.homeVideosGrid)
     const params = useParams();
-    const videoArr = videoData || [];//for error debugging
-    console.log(typeof(videoData),videoData);
-    const currentUservideos = videoArr.filter(video => (params.id === video.userId));
+    //const videoArr = videoData || [];for error debugging
+    const videoArr = videoData
+    // console.log(typeof(videoData),videoData);
+    const currentUservideos = videoArr.filter(video => (params.id === video.userId));  //filtering according to user ID
+
+
+    //Todo add filter on channel page as well
+    
     const navigate = useNavigate();
-    console.log(currentUser)
+    // console.log(currentUser)
 
  if (!currentUser) {
         // Redirect to home page

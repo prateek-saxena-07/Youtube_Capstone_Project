@@ -19,6 +19,7 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import VideoUpdateModal from "./VideoUpdateModal";
 import VideoDeleteModal from "./VideoDeleteModal";
 import { Link } from "react-router-dom";
+import {format} from "timeago.js";
 
 export default function ChannelVideoCard(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,7 +66,7 @@ export default function ChannelVideoCard(props) {
               <Text color="blue.600" fontSize="l">
                 {props.props.channel}
               </Text>
-              <Text>{props.props.views + " views"} &middot; {"8 Days ago"}</Text>
+              <Text>{props.props.views + " views"} &middot; {format(props.props.createdAt)}</Text>
             </Stack>
             <Spacer />
 

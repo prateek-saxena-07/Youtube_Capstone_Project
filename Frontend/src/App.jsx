@@ -45,8 +45,9 @@ const App = () => {
 
     return (
         <>
+            <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
             <Grid
-                templateAreas={`"header header"
+                templateAreas={`
                     "sidebar filter"
                     "sidebar grid"`}
                 gridTemplateRows={'51px 40px'}
@@ -56,9 +57,9 @@ const App = () => {
                 color='blackAlpha.700'
                 fontWeight='bold'
             >
-                <GridItem pl={2} area={'header'}>
-                    <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> {/* Pass searchTerm and setSearchTerm */}
-                </GridItem>
+                {/* <GridItem pl={2} area={'header'}>
+                    <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
+                </GridItem> */}
                 <GridItem pl='2' area={'sidebar'} pt={4} mt={0}>
                     <Sidebar />
                 </GridItem>

@@ -30,13 +30,16 @@ export default function uploadModal() {
   const [imgPerc, setImgPerc] = useState(0);
   const [videoPerc, setVideoPerc] = useState(0);
   const [inputs, setInputs] = useState([]);
-  // const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState([]);
 
   const handleChange = e => {
     setInputs(prev => {
       return { ...prev, [e.target.name]: e.target.value };
-  })
-}
+    })
+  };
+    const handleTags = (e) => {
+    setTags(e.target.value.split(","));
+  };
   
   const uploadFile = (file,urlType) => {
     const storage = getStorage(app);
@@ -88,7 +91,7 @@ export default function uploadModal() {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(inputs)
+      body: JSON.stringify({...inputs,tags})
     });
 
       const videosRes = await fetch("http://localhost:5100/api/v1/temp/getVideos");
@@ -134,7 +137,7 @@ export default function uploadModal() {
             </FormControl>
             <Input type="text" name="title" placeholder="Title" onChange={handleChange}></Input>
             <Input type="text" name="desc" placeholder="Description" onChange={handleChange}></Input>
-            <Input type="text" placeholder="Tags separated by commas"></Input>
+            <Input type="text" placeholder="Tags separated by commas" onChange={handleTags}></Input>
           </ModalBody>
 
           <ModalFooter>
