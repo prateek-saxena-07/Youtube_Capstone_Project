@@ -19,11 +19,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import app from "../../firebase";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { setVideos } from "../utils/homeVideosSlice";
 
 
 export default function uploadModal() {
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [img, setImg] = useState(undefined);
   const [video, setVideo] = useState(undefined);
@@ -34,7 +36,7 @@ export default function uploadModal() {
 
   const handleChange = e => {
     setInputs(prev => {
-      return { ...prev, [e.target.name]: e.target.value };
+      return { ...prev, [e.target.name]: e.target.value,channel:currentUser.channel_name };
     })
   };
     const handleTags = (e) => {

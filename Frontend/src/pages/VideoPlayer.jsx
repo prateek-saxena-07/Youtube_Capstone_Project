@@ -12,7 +12,7 @@ const VideoPageLayout = () => {
   const params = useParams();
   console.log("videoplayer",videos);
   const video = videos.filter(vid => vid._id === params.id);
-
+console.log(video)
   useEffect(() => {
   
     const fetchComments = async () => {
@@ -59,12 +59,10 @@ const VideoPageLayout = () => {
           </Text>
           <Button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></Button><Button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon></Button>
             <Text fontSize="lg" color="gray.500">
-              {"Published by:"}
+              {"Published by:"+video[0].channel}
             </Text>
             <Text mt={2}>
-              Video description goes here. It provides detailed information about
-              the video, including links, hashtags, and timestamps for sections of
-              the video.
+                  {video[0].desc}
             </Text>
           </Box>
           {/* Comments Section */}
