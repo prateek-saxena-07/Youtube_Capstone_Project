@@ -1,5 +1,5 @@
 import express from 'express';
-import { update ,like,dislike,subscribe,unsubscribe } from '../controller/user.js';
+import { update ,like,dislike,subscribe,unsubscribe,getUser } from '../controller/user.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 
 const router = express.Router();
@@ -18,5 +18,7 @@ router.put("/sub/:id", verifyToken, subscribe);
 
 //unsubscribe a user
 router.put("/unsub/:id", verifyToken, unsubscribe);
+
+router.get('/:id',getUser)
 
 export default router

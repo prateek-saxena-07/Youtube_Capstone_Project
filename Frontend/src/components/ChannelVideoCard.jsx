@@ -22,12 +22,12 @@ import { Link } from "react-router-dom";
 import {format} from "timeago.js";
 
 export default function ChannelVideoCard(props) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [open, setOpen] = useState(false);
-  const handleUpdate = (e) => {
-    if (open) { setOpen(false); onClose() }
-    else { setOpen(true); onOpen(); }
-  };
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  // const [open, setOpen] = useState(false);
+  // const handleUpdate = (e) => {
+  //   if (open) { setOpen(false); onClose() }
+  //   else { setOpen(true); onOpen(); }
+  // };
 
   return (
     <>
@@ -72,15 +72,15 @@ export default function ChannelVideoCard(props) {
 
             {/* Menu attached to the icon */}
             <Stack mr={4} mb={12}>
-              <Menu isOpen={isOpen}>
-                <MenuButton as="button" onClick={handleUpdate}>
+              <Menu >
+                <MenuButton as="button" >
                   <FontAwesomeIcon icon={faEllipsisVertical} />
                 </MenuButton>
                 <MenuList minWidth={'auto'}>
-                  <MenuItem onClick={handleUpdate}>
+                  <MenuItem >
                       <VideoUpdateModal videoId={props.props._id} />
                   </MenuItem>
-                  <MenuItem onClick={handleUpdate}>
+                  <MenuItem>
                       <VideoDeleteModal videoId={props.props._id} />
                   </MenuItem>
                 </MenuList>

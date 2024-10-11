@@ -3,6 +3,16 @@ import User from "../model/user.model.js";
 import Video from "../model/video.model.js";
 
 
+export const getUser = async (req, res) => {
+  
+  const user = await User.findById(req.params.id);
+
+  const { password, ...others } = user._doc;
+
+  res.status(200).json(others);
+}
+
+
 export const update = async (req, res, next) => {
     //req.user.id comes from verifytoken middleware
 

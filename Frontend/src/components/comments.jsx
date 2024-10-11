@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchCommentsStart,
@@ -12,13 +12,22 @@ import {
   deleteCommentFailure,
 } from '../utils/commentsSlice';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import {
+  Menu, MenuButton, MenuList,MenuItem
+  
+} from '@chakra-ui/react';
 
 
 const Comments = ({ videoId }) => {
   const dispatch = useDispatch();
   const { comments, loading, error } = useSelector((state) => state.comments);
   const [newComment, setNewComment] = useState(''); // State to manage new comment input
-const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputRef = useRef(null);
+  
   useEffect(() => {
     const fetchComments = async () => {
       dispatch(fetchCommentsStart());
@@ -77,31 +86,62 @@ const { currentUser } = useSelector((state) => state.user);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading comments.</p>;
 
+ const handleFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleBlur = (event) => {
+    // Check if the click is on the button
+    if (event.relatedTarget !== null && event.relatedTarget.tagName === 'BUTTON') {
+      // Do nothing to prevent focus loss
+      return;
+    }
+    setIsInputFocused(false);
+  };
+ const handleButtonClick = () => {
+    handlePostComment();
+    
+  };
+
   return (
     <div>
       {/* Comments List */}
       {comments.map((comment) => (
         <div key={comment._id}>
+          <img src={currentUser.profileImg} alt="" height={'20px'} width={'20px'}/>
           <p>{comment.desc}</p>
-          {currentUser&&comment.userId === currentUser._id && ( 
-  <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+          <Menu>
+                <MenuButton as="button" >
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </MenuButton>
+                <MenuList minWidth={'auto'}>
+                  {currentUser&&comment.userId === currentUser._id && ( 
+  <MenuItem onClick={() => handleDeleteComment(comment._id)}>Delete</MenuItem>
 )}
+                </MenuList>
+              </Menu>
+         
            
         </div>
       ))}
 
       {/* Add Comment Form */}
       {currentUser ? ( // Only show the input if the user is logged in
-        <div>
+        <div><img src={currentUser.profileImg} alt="" height={'20px'} width={'20px'}/>
           <input
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Add a comment"
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={inputRef}
           />
-          <button onClick={handlePostComment} disabled={!newComment.trim()}>
-            Post
-          </button>
+           {isInputFocused && (
+        <button onClick={handleButtonClick} disabled={!newComment.trim()}>
+          Post
+        </button>
+      )}
         </div>
       ) : (
         <p>Please <Link to='/login'>log in</Link> to add comments.</p> // Message for logged-out users
