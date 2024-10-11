@@ -7,8 +7,9 @@ import { Flex, Box, Spacer, Button,Drawer,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,useDisclosure } from '@chakra-ui/react';
-import { faBars, faUpload,faHouse } from '@fortawesome/free-solid-svg-icons';
+  DrawerCloseButton, useDisclosure,VStack
+} from '@chakra-ui/react';
+  import {faCompass, faGamepad, faBook, faAddressCard, faBacon, faCab, faDashboard, faDownload,faBars, faVideo,faHouse  } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -43,9 +44,22 @@ const Header = ({setSearchTerm}) => { // Accept props
         <FontAwesomeIcon icon={faBars}/>
       </Button><Logo/></Box></DrawerHeader>
           <DrawerBody>
-            <p><FontAwesomeIcon icon={faHouse} /> Some contents...</p>
-            <p><FontAwesomeIcon icon={faHouse} /> Some contents...</p>
-            <p><FontAwesomeIcon icon={faHouse} /> Some contents...</p>
+            <VStack>
+            <Box>
+                <FontAwesomeIcon icon={faHouse} />
+                Home
+            </Box>
+                <Box><FontAwesomeIcon icon={faCompass} />Explore</Box>
+                <Box><FontAwesomeIcon icon={faGamepad} />Gaming</Box>
+                <Box><FontAwesomeIcon icon={faBook} />Books</Box>
+                <Box><FontAwesomeIcon icon={faAddressCard} />Profile</Box>
+            <Box><FontAwesomeIcon icon={faBacon} />Dining</Box>
+            <Box><FontAwesomeIcon icon={faCab} />Travel</Box>
+            <Box><FontAwesomeIcon icon={faDashboard} />Travel</Box>
+            <Box><FontAwesomeIcon icon={faDownload} />Download</Box>
+
+                
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -71,7 +85,7 @@ const Header = ({setSearchTerm}) => { // Accept props
                 <Box>
                     {currentUser ? (
                         <>
-                            <UploadModal><FontAwesomeIcon icon={faUpload} /></UploadModal>
+                            <UploadModal></UploadModal>
                             <ChannelModal />
                             {currentUser.username} <Button onClick={handleLogout}>Logout</Button>
                         </>

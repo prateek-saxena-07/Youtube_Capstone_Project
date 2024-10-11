@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faVideo } from "@fortawesome/free-solid-svg-icons";
 import app from "../../firebase";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -40,7 +40,7 @@ export default function uploadModal() {
     })
   };
     const handleTags = (e) => {
-    setTags(e.target.value.split(","));
+    setTags(e.target.value.toLowerCase().split(","));
   };
   
   const uploadFile = (file,urlType) => {
@@ -121,7 +121,7 @@ export default function uploadModal() {
   }
   return (
     <>
-      <FontAwesomeIcon icon={faUpload} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon>
+      <FontAwesomeIcon icon={faVideo} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

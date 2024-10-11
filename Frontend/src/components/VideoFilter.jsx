@@ -4,15 +4,15 @@ const VideoFilter = ({setFilter}) => {
 
     return (<>
         <ButtonGroup pl={6}>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>All</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>All</Button>
             
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Podcast</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Music</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>News</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Satire</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Gaming</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Dad Jokes</Button>
-            <Button onClick={(e)=>setFilter(e.target.textContent)}>Live</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Podcast</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Music</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>News</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Satire</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Gaming</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Dad Jokes</Button>
+            <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>Live</Button>
         </ButtonGroup>
     </>)
 }

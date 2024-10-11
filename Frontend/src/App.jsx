@@ -16,10 +16,8 @@ const App = () => {
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.homeVideosGrid.videoData);
     console.log(videos);
-    // const SearchedItems = videos.filter((item) =>
-    //     item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    // );
     console.log(activeFilter)
+    
     const getFilteredItems = (videos) => {
     // If the active filter is 'all', return all videos
     if (activeFilter.toLowerCase() === 'all') {

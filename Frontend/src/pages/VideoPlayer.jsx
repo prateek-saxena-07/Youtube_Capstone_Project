@@ -13,11 +13,12 @@ const VideoPageLayout = () => {
   // const videos = useSelector((state) => state.homeVideosGrid.videoData);
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
+  console.log("Current Video in Component:", currentVideo);
   const dispatch = useDispatch();
 
   const params = useParams();
-  // console.log("videoplayer",videos);
-  // const video = videos.filter(vid => vid._id === params.id);
+//   console.log("videoplayer",videos);
+//   const video = videos.filter(vid => vid._id === params.id);
 
 // console.log(video)
   useEffect(() => {
@@ -33,9 +34,10 @@ const VideoPageLayout = () => {
 
   useEffect(() => {
     const fetchVideo = async () => {
+      console.log("Fetching video useEffect running");
       const response = await fetch(`http://localhost:5100/api/v1/temp/find/${params.id}`);
       const data = await response.json();
-      console.log(data);
+      console.log("data",data);
       dispatch(fetchSuccess(data));
     }
     fetchVideo();
@@ -49,7 +51,7 @@ const VideoPageLayout = () => {
       
     }
     views();
-  },[])
+  },[dispatch,params.id])
 
   const handleLike = async () => {
     const response = await fetch(`http://localhost:5100/api/v1/user/like/${params.id}`, {
@@ -76,6 +78,10 @@ const VideoPageLayout = () => {
    dispatch(dislike(currentUser._id));
   }
   
+ if (!currentVideo) {
+    return <div>Loading...</div>; 
+  }
+
   return (
       <>
           <Header/>
@@ -105,7 +111,7 @@ const VideoPageLayout = () => {
 ) : (
   <p>Loading...</p> 
 )}
-        
+        {console.log(currentVideo)}
           {/* Video Description */}
           <Box gridArea="description">
             <Text fontSize="2xl" fontWeight="bold">
