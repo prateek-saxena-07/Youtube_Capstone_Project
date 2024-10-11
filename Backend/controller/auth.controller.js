@@ -5,9 +5,15 @@ import jwt from 'jsonwebtoken';
 
 export const Register = async(req,res,next) => {
     try {
+        const { username }=req.body
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
-        const user = new User({ ...req.body, password:hash });
+        const user = new User({
+          ...req.body,
+          password: hash,
+          profileImg: `https://api.dicebear.com/5.x/initials/svg?seed=${username}`,
+          banner: `https://api.dicebear.com/5.x/initials/svg?seed=${username}`,
+        });
         await user.save();
         const { password, ...others } = user._doc;
 

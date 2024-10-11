@@ -134,7 +134,9 @@ const VideoPageLayout = () => {
           </Button>):
 (<Button><FontAwesomeIcon icon={faThumbsDownOutline} />&nbsp;{currentVideo.dislikes.length}</Button>)}
 
-
+<Button mt={4} borderRadius={'30px'} color={"black"} background={'white'}>
+                                Subscribe
+                            </Button>
 
 
 

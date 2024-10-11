@@ -19,9 +19,10 @@ import { useNavigate } from 'react-router';
 import { loginSuccess } from '../utils/userSlice';
 
 const ChannelModal = () => {
-    const [channelData, setChannelData] = useState({ channel_name: '', handle: '' });
+     const { currentUser } = useSelector(state => state.user);
+    const [channelData, setChannelData] = useState({ channel_name: '', handle: '',profileImg:currentUser.profileImg,banner:currentUser.banner});
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { currentUser } = useSelector(state => state.user);
+   
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -59,7 +60,7 @@ const ChannelModal = () => {
     return (
         <>
             {/* Conditionally redirect or open modal */}
-            <Avatar onClick={handleAvatarClick} cursor="pointer" />
+            <Avatar onClick={handleAvatarClick} cursor="pointer" src={currentUser.profileImg} />
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -80,6 +81,20 @@ const ChannelModal = () => {
                             <Input
                                 name="handle"
                                 value={channelData.handle}
+                                type="text"
+                                onChange={handleChange}
+                            />
+                             <FormLabel>Profile/Channel Image</FormLabel>
+                            <Input
+                                name="profileImg"
+                                value={channelData.profileImg}
+                                type="text"
+                                onChange={handleChange}
+                            />
+                             <FormLabel>Channel Banner</FormLabel>
+                            <Input
+                                name="banner"
+                                value={channelData.banner}
                                 type="text"
                                 onChange={handleChange}
                             />

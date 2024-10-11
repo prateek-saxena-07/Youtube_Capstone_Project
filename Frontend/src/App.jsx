@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setVideos } from "./utils/homeVideosSlice";
 
 const App = () => {
-    const [bars, setBars] = useState(false);
+    // const [bars, setBars] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState(""); // State for search term
@@ -71,7 +71,7 @@ const App = () => {
 
     return (
         <>
-            <Header setSearchTerm={setSearchTerm} /> 
+            <Header setSearchTerm={setSearchTerm}  /> 
             <Grid
                 templateAreas={`
                     "sidebar filter"
@@ -87,7 +87,7 @@ const App = () => {
                     <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
                 </GridItem> */}
                 <GridItem pl='2' area={'sidebar'} pt={4} mt={0}>
-                    <Sidebar />
+                    <Sidebar  />
                 </GridItem>
                 <GridItem pl='0' area={'filter'}>
                     <VideoFilter setFilter={setActiveFilter} />

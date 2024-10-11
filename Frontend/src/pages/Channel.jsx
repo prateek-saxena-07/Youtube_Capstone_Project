@@ -35,14 +35,14 @@ const Channel = () => {
         <VStack>
             <Box mb={8}  ml={10} mr={4}>
                 {/* Banner */}
-                <Image borderRadius={'30px'} src="https://yt3.googleusercontent.com/vygK_AaY5no21qC2M341JS_fnWRqaTjDt1ZeGkgeqgqMcRF1pq1PHpTmvNe5JKPzR55CNVe286w=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"></Image>
+                <Image borderRadius={'30px'} src={currentUser.banner} height={'100px'} width={'1000px'}></Image>
                 
             </Box>
             <Box width={'90vw'}>
                 <HStack>
                     <Box>
                         {/* Logo */}
-                        <Image src="https://yt3.googleusercontent.com/AweUrODK-FaOP9jpCoya2F4fsz7Mdip1NJXG42OlplDLuWPPKwUQS7RIfJuXtQASX4-0w3L4=s160-c-k-c0x00ffffff-no-rj" borderRadius={'50%'}></Image>
+                        <Image src={currentUser.profileImg} borderRadius={'50%'} height={'200px'}></Image>
                     </Box>
 
                     <Box>
@@ -114,4 +114,5 @@ const Channel = () => {
 
     </>)
 }
+
 export default Channel;

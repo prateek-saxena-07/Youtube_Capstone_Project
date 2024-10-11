@@ -8,7 +8,9 @@ const userSchema = new mongoose.Schema(
     img: { type: String, default:'' },
     subscribers: { type: Number, default: 0 },
     channel_name: { type: String ,default:''},
-    handle:{type:String},
+    handle: { type: String },
+    profileImg: { type: String },
+    banner:{type:String}
 
   },
   {
