@@ -49,6 +49,7 @@ const Comments = ({ videoId }) => {
       const commentData = {
         videoId,
         desc: newComment, // Comment description from input
+        profileImg:currentUser.profileImg
       };
 
       const response = await fetch(`http://localhost:5100/api/v1/comments/`, {
@@ -108,7 +109,7 @@ const Comments = ({ videoId }) => {
       {/* Comments List */}
       {comments.map((comment) => (
         <div key={comment._id}>
-          <img src={currentUser.profileImg} alt="" height={'20px'} width={'20px'}/>
+          <img src={comment.profileImg} alt="" height={'20px'} width={'20px'}/>
           <p>{comment.desc}</p>
           <Menu>
                 <MenuButton as="button" >
