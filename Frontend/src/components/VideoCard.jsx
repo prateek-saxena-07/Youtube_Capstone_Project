@@ -40,7 +40,7 @@ export default function VideoCard(props) {
         {props.props.channel}
       </Text>
       <Text>
-      {props.props.views+" views"} &middot; {format(props.props.createdAt)}
+      {(props.props.views/2)+" views"} &middot; {format(props.props.createdAt)}
       </Text>
               </Stack>
               <Spacer/>

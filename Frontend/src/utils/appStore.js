@@ -1,7 +1,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import homeVideosGridReducer from "./homeVideosSlice.js";
 import userReducer from "./userSlice.js";
-import commentReducer from './commentsSlice.js'
+import commentReducer from './commentsSlice.js';
+import videoReducer from './videoPlayerSlice.js'
 import {
   persistStore,
   persistReducer,
@@ -24,7 +25,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   homeVideosGrid: homeVideosGridReducer,
-  comments:commentReducer
+  comments: commentReducer,
+  video:videoReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

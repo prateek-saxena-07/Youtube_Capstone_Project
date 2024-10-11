@@ -53,7 +53,7 @@ const Channel = () => {
 •
 2.18M subscribers
 •
-                                94 videos</Text>
+                                    {currentUservideos.length} videos</Text>
                             <Text>
                                 Sponsorship Enquires: Yeahmad@rightclick.gg ...<b>more</b></Text>
                             <Text>yeahmad.com

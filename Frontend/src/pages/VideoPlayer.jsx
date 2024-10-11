@@ -1,18 +1,25 @@
 import Header from '../components/Header';
 import { Box, Grid, Text, Image, Flex, Button } from "@chakra-ui/react";
-import { faThumbsUp,faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as faThumbsUpOutline,faThumbsDown as faThumbsDownOutline } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Comments from '../components/Comments';
+import { dislike, fetchSuccess, like } from '../utils/videoPlayerSlice';
 
 const VideoPageLayout = () => {
-  const videos = useSelector((state) => state.homeVideosGrid.videoData);
+  // const videos = useSelector((state) => state.homeVideosGrid.videoData);
+  const { currentUser } = useSelector((state) => state.user);
+  const { currentVideo } = useSelector((state) => state.video);
+  const dispatch = useDispatch();
+
   const params = useParams();
-  console.log("videoplayer",videos);
-  const video = videos.filter(vid => vid._id === params.id);
-console.log(video)
+  // console.log("videoplayer",videos);
+  // const video = videos.filter(vid => vid._id === params.id);
+
+// console.log(video)
   useEffect(() => {
   
     const fetchComments = async () => {
@@ -22,8 +29,52 @@ console.log(video)
     }
     fetchComments();
 
-})
+  });
 
+  useEffect(() => {
+    const fetchVideo = async () => {
+      const response = await fetch(`http://localhost:5100/api/v1/temp/find/${params.id}`);
+      const data = await response.json();
+      console.log(data);
+      dispatch(fetchSuccess(data));
+    }
+    fetchVideo();
+  },[dispatch,params.id]);
+
+  useEffect(() => {
+     const views= async () => {
+       await fetch(`http://localhost:5100/api/v1/temp/view/${params.id}`, {
+         method: 'PUT'
+       });
+      
+    }
+    views();
+  },[])
+
+  const handleLike = async () => {
+    const response = await fetch(`http://localhost:5100/api/v1/user/like/${params.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          },
+        credentials:'include',
+    });
+    const data = await response.json();
+    console.log(data);
+    dispatch(like(currentUser._id))
+  }
+ const handleDislike = async () => {
+    const response = await fetch(`http://localhost:5100/api/v1/user/dislike/${params.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          },
+        credentials:'include',
+    });
+    const data = await response.json();
+   console.log(data);
+   dispatch(dislike(currentUser._id));
+  }
   
   return (
       <>
@@ -40,29 +91,59 @@ console.log(video)
           padding={6}
         >
           {/* Video Player */}
-          <Box gridArea="video" bg="gray.200" height="400px">
-            <iframe
-              width="100%"
-              height="100%"
-              src={video[0].videoUrl}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-        </Box>
+         {currentVideo ? (
+            <Box gridArea="video" bg="gray.200" height="400px">
+          <iframe
+    width="100%"
+    height="100%"
+    src={currentVideo.videoUrl}
+    title={currentVideo.title}
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  /></Box>
+) : (
+  <p>Loading...</p> 
+)}
         
           {/* Video Description */}
           <Box gridArea="description">
             <Text fontSize="2xl" fontWeight="bold">
-              {video[0].title}
+              {currentVideo.title}
           </Text>
-          <Button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon></Button><Button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon></Button>
+
+          {currentUser&&currentVideo?(<Button onClick={handleLike}>
+            {  currentVideo.likes?.includes(currentUser._id) ? (
+              <><FontAwesomeIcon icon={faThumbsUp} />&nbsp;{currentVideo.likes.length}</>
+              ) : (
+                <> <FontAwesomeIcon icon={faThumbsUpOutline} />&nbsp;{currentVideo.likes.length}</>)}
+  
+                    
+            
+          </Button>):
+(<Button><FontAwesomeIcon icon={faThumbsUpOutline} />&nbsp;{currentVideo.likes.length}</Button>)}
+{" "}
+        {currentUser&&currentVideo?(<Button onClick={handleDislike}>
+            {  currentVideo.dislikes?.includes(currentUser._id) ? (
+                <><FontAwesomeIcon icon={faThumbsDown} />&nbsp;{currentVideo.dislikes.length}</>
+              ) : (
+                <> <FontAwesomeIcon icon={faThumbsDownOutline} /> &nbsp;{currentVideo.dislikes.length}</>)}
+  
+   
+            
+          </Button>):
+(<Button><FontAwesomeIcon icon={faThumbsDownOutline} />&nbsp;{currentVideo.dislikes.length}</Button>)}
+
+
+
+
+
+
             <Text fontSize="lg" color="gray.500">
-              {"Published by:"+video[0].channel}
+              {"Published by:"+currentVideo.channel}
             </Text>
             <Text mt={2}>
-                  {video[0].desc}
+                  {currentVideo.desc}
             </Text>
           </Box>
           {/* Comments Section */}

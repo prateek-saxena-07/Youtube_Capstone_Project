@@ -25,7 +25,7 @@ const { currentUser } = useSelector((state) => state.user);
       try {
         const response = await fetch(`http://localhost:5100/api/v1/comments/${videoId}`);
           const data = await response.json();
-          console.log(data)
+          // console.log(data)
         dispatch(fetchCommentsSuccess(data));
       } catch (err) {
         dispatch(fetchCommentsFailure());
