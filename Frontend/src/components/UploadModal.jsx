@@ -66,7 +66,7 @@ export default function uploadModal() {
             break;
         }
       },
-      (error) => {},
+      (error) => {console.error(error)},
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setInputs((prev) => {
