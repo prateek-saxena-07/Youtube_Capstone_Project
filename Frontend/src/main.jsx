@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import SignUp from './pages/SignUp.jsx'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider,extendTheme  } from '@chakra-ui/react'
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -12,7 +12,16 @@ import VideoPlayer from './pages/VideoPlayer.jsx'
 import Channel from './pages/Channel.jsx';
 import { PersistGate } from 'redux-persist/integration/react'
 
-
+const theme = extendTheme({
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: props.colorMode === 'dark' ? 'gray.800' : 'gray.200',
+        color: props.colorMode === 'dark' ? 'white' : 'black',
+      },
+    }),
+  },
+});
 
 const appRouter = createBrowserRouter([
   {
@@ -43,7 +52,7 @@ const appRouter = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   
   <StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={appStore}>
         <PersistGate loading={null} persistor={persistor}>
           <RouterProvider router={appRouter} />

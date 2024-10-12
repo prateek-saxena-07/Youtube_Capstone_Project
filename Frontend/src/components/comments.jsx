@@ -15,7 +15,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import {
-  Menu, MenuButton, MenuList,MenuItem
+  Menu, MenuButton, MenuList,MenuItem,Input,  Box,
+  Flex,
+  Image,
+  Text,
+  IconButton,
+  Divider,
   
 } from '@chakra-ui/react';
 
@@ -34,7 +39,7 @@ const Comments = ({ videoId }) => {
       try {
         const response = await fetch(`http://localhost:5100/api/v1/comments/${videoId}`);
           const data = await response.json();
-          // console.log(data)
+          console.log(data)
         dispatch(fetchCommentsSuccess(data));
       } catch (err) {
         dispatch(fetchCommentsFailure());
@@ -106,30 +111,11 @@ const Comments = ({ videoId }) => {
 
   return (
     <div>
-      {/* Comments List */}
-      {comments.map((comment) => (
-        <div key={comment._id}>
-          <img src={comment.profileImg} alt="" height={'20px'} width={'20px'}/>
-          <p>{comment.desc}</p>
-          <Menu>
-                <MenuButton as="button" >
-                  <FontAwesomeIcon icon={faEllipsisVertical} />
-                </MenuButton>
-                <MenuList minWidth={'auto'}>
-                  {currentUser&&comment.userId === currentUser._id && ( 
-  <MenuItem onClick={() => handleDeleteComment(comment._id)}>Delete</MenuItem>
-)}
-                </MenuList>
-              </Menu>
-         
-           
-        </div>
-      ))}
 
-      {/* Add Comment Form */}
+{/* Add Comment Form */}
       {currentUser ? ( // Only show the input if the user is logged in
-        <div><img src={currentUser.profileImg} alt="" height={'20px'} width={'20px'}/>
-          <input
+        <Box display='flex' pt={2} pl={4}><Image src={currentUser.profileImg} alt="" height={'40px'} width={'40px'} borderRadius={'50px'} mr={4}/>
+          <Input
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
@@ -137,16 +123,63 @@ const Comments = ({ videoId }) => {
             onFocus={handleFocus}
             onBlur={handleBlur}
             ref={inputRef}
+            borderBottom={'solid 1px'}
+            borderRight={'none'}
+            borderTop={'none'}
+            borderLeft={'none'}
+            width={'70%'}
+            mr={2}
           />
            {isInputFocused && (
         <button onClick={handleButtonClick} disabled={!newComment.trim()}>
           Post
         </button>
       )}
-        </div>
+        </Box>
       ) : (
         <p>Please <Link to='/login'>log in</Link> to add comments.</p> // Message for logged-out users
       )}
+
+
+      {/* Comments List */}
+       <Box>
+      {comments.map((comment) => (
+        <Flex
+          key={comment._id}
+          pt={6}
+          alignItems="flex-start"
+          // _hover={{ bg: "gray.100" }}
+        >
+          <Image
+            src={comment.profileImg}
+            alt="Profile"
+            boxSize="40px"
+            borderRadius="full"
+            mr={3}
+          />
+          <Box flex="1">
+            <Text fontWeight="bold" fontSize="sm">
+              {comment.username} {/* Assuming you have a username field */}
+            </Text>
+            <Text fontSize="sm" color="gray.600" noOfLines={2}>
+              {comment.desc}
+            </Text>
+          </Box>
+          <Menu>
+            <MenuButton as={IconButton} icon={<FontAwesomeIcon icon={faEllipsisVertical} />} variant="outline" size="sm" />
+            <MenuList minWidth="auto">
+              {currentUser && comment.userId === currentUser._id && (
+                <MenuItem onClick={() => handleDeleteComment(comment._id)}>
+                  Delete
+                </MenuItem>
+              )}
+            </MenuList>
+          </Menu>
+        </Flex>
+      ))}
+    </Box>
+
+      
     </div>
   );
 };

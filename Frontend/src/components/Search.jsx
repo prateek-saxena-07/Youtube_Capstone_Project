@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Box, Button } from '@chakra-ui/react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 
 const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
     const [inputValue, setInputValue] = useState(''); // Manage local input value
@@ -17,7 +18,7 @@ const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
 
     return (
         <>
-            <Box className="search" mt={0.5} onClick={handleSearchClick}  display="flex" 
+            <Box className="search" mt={1} onClick={handleSearchClick}  display="flex" 
                 alignItems="center" 
                 width="100%">
                 <input
@@ -29,7 +30,7 @@ const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
                     onChange={(e) => setInputValue(e.target.value)} // Update local state on input change
                 />
                
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} cursor={'pointer'}/>
                
             </Box>
         </>

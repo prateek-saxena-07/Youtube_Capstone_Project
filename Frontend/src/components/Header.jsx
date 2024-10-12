@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../utils/userSlice';
 import ChannelModal from './ChannelModal';
 import UploadModal from './UploadModal';
+import ColorModeToggleButton from './Theme';
 
 
 const Header = ({setSearchTerm}) => { // Accept props
@@ -132,14 +133,18 @@ const Header = ({setSearchTerm}) => { // Accept props
                 <Spacer />
                 <Spacer />
                 <Spacer />
-                <Spacer /><Spacer />
-                <Box display={'flex'} >
+                <Spacer />
+                <Spacer />
+          <Box display={'flex'} justifyContent="space-between" alignItems="center" gap={4} >
+            <ColorModeToggleButton/>
                     {currentUser ? (
                         <>
                 <UploadModal></UploadModal>
-                <MdOutlineNotificationsNone size={24}/>
-                            <ChannelModal />
-                            {currentUser.username} 
+                <MdOutlineNotificationsNone size={24} cursor={'pointer'}/>
+                            <Box>
+                              <ChannelModal />
+                              
+                            </Box>
                             
                         </>
                     ) : (
