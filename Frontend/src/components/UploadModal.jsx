@@ -21,6 +21,7 @@ import app from "../../firebase";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setVideos } from "../utils/homeVideosSlice";
+import { BiVideoPlus } from "react-icons/bi";
 
 
 export default function uploadModal() {
@@ -121,14 +122,14 @@ export default function uploadModal() {
   }
   return (
     <>
-      <FontAwesomeIcon icon={faVideo} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon>
-
+      {/* <FontAwesomeIcon icon={faVideo} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon> */}
+        <BiVideoPlus cursor={'pointer'} onClick={onOpen} size={24} />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent >
           <ModalHeader>Upload Your Video</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody >
             <FormControl>
               <FormLabel>Select Video File</FormLabel>
               {videoPerc>0?("Uploading" +videoPerc):(<Input type="file" accept="video/*" onChange={e=>setVideo(e.target.files[0])}/>)}

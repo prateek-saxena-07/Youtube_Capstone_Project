@@ -84,13 +84,13 @@ const App = () => {
                 {/* <GridItem pl={2} area={'header'}>
                     <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
                 </GridItem> */}
-                <GridItem pl='2' area={'sidebar'} pt={4} mt={0}>
+                <GridItem pl='2' area={'sidebar'} pt={6} mt={0}>
                     <Sidebar  />
                 </GridItem>
-                <GridItem pl='0' area={'filter'}>
+                <GridItem pl='3' area={'filter'} pt={4}>
                     <VideoFilter setFilter={setActiveFilter} />
                 </GridItem>
-                <GridItem pl='0' area={'grid'}>
+                <GridItem pl='3' area={'grid'} pt={0}>
                     <VideoGrid videos={FinalVideos} />
                 </GridItem>
             </Grid>

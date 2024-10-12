@@ -60,7 +60,7 @@ const ChannelModal = () => {
     return (
         <>
             {/* Conditionally redirect or open modal */}
-            <Avatar onClick={handleAvatarClick} cursor="pointer" src={currentUser.profileImg} />
+            <Avatar onClick={handleAvatarClick} cursor="pointer" src={currentUser.profileImg} size={'sm'}/>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

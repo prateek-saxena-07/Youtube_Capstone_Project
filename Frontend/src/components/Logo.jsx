@@ -8,9 +8,9 @@ export default function Logo() {
     return (<>
         <Link to='/'>
             <Box className="logo" style={{display:'flex'}} mt={1}>
-                <FontAwesomeIcon icon={faYoutube} style={{ color: 'red', padding: '5px',width:'20px'}} />
+                <FontAwesomeIcon icon={faYoutube} style={{ color: 'red', padding: '5px',width:'20px',height:'20px'}} />
             
-                <Box style={{display:'flex'}}>YouTube
+                <Box style={{display:'flex'}} fontWeight={'bold'} fontSize={18}>YouTube
                     <FontAwesomeIcon icon={faTrademark} style={{width:'8px', height:'12px'}} />
             </Box>
             </Box>

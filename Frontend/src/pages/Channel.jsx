@@ -35,7 +35,7 @@ const Channel = () => {
         <VStack>
             <Box mb={8}  ml={10} mr={4}>
                 {/* Banner */}
-                <Image borderRadius={'30px'} src={currentUser.banner} height={'100px'} width={'1000px'}></Image>
+                <Image borderRadius={'30px'} src={currentUser.banner} height={'150px'} width={'1500px'}></Image>
                 
             </Box>
             <Box width={'90vw'}>
@@ -58,7 +58,7 @@ const Channel = () => {
                                 Sponsorship Enquires: Yeahmad@rightclick.gg ...<b>more</b></Text>
                             <Text>yeahmad.com
                                     <b>and 3 more links</b></Text>
-                            <Button mt={4} borderRadius={'30px'} color={"black"} background={'white'}>
+                            <Button mt={4} borderRadius={'30px'} color={"black"} background={'Red'}>
                                 Subscribe
                             </Button>
                             </Box>

@@ -1,6 +1,7 @@
 import Header from '../components/Header';
-import { Box, Grid, Text, Image, Flex, Button, VStack, HStack, Divider } from "@chakra-ui/react";
+import { Box, Grid, Text, Image, Flex, Button, VStack, HStack, Divider,ButtonGroup,IconButton } from "@chakra-ui/react";
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { faThumbsUp as faThumbsUpOutline, faThumbsDown as faThumbsDownOutline } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
@@ -131,8 +132,27 @@ const VideoPageLayout = () => {
         </Box>
 
         {/* Recommended Videos */}
-        <Box gridArea="recommendations" padding="4" bg="gray.50" borderRadius="md" overflowY="scroll" height="full">
+        <Box gridArea="recommendations" padding="4"  borderRadius="md"  height="full" overflowY="auto">
           <Text fontSize="xl" fontWeight="bold" mb={4}>Recommended Videos</Text>
+           <Box pb={4} >
+                {/* Filters */}
+                <ButtonGroup>
+            <Button>
+                Latest
+            </Button>
+            <Button>
+                Popular
+                    </Button>
+                    <Button>
+                        Oldest
+              </Button>
+
+              <IconButton borderRadius={'50px'} backgroundColor={'transparent'}
+          icon={<ChevronRightIcon />} ml={2}
+        />
+            </ButtonGroup>
+              
+        </Box>
           <VStack spacing={4} align="stretch">
             <Flex>
               <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
@@ -150,6 +170,51 @@ const VideoPageLayout = () => {
                 <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
               </Box>
             </Flex>
+            <Flex>
+              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Box ml={3}>
+                <Text fontWeight="bold">Advanced React Techniques</Text>
+                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+              </Box>
+            </Flex>
+            <Flex>
+              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Box ml={3}>
+                <Text fontWeight="bold">Advanced React Techniques</Text>
+                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+              </Box>
+            </Flex>
+            <Flex>
+              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Box ml={3}>
+                <Text fontWeight="bold">Advanced React Techniques</Text>
+                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+              </Box>
+            </Flex>
+            <Flex>
+              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Box ml={3}>
+                <Text fontWeight="bold">Advanced React Techniques</Text>
+                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+              </Box>
+              
+            </Flex>
+            <Flex>
+              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Box ml={3}>
+                <Text fontWeight="bold">Advanced React Techniques</Text>
+                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+              </Box>
+            </Flex>
+          
+           
+           
+
           </VStack>
         </Box>
       </Grid>
