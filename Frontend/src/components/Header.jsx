@@ -1,6 +1,7 @@
 import Search from './Search';
 import Logo from './Logo';
-import Signin from './Signinbtn';
+import { Signin } from './Signinbtn';
+import {login} from './Signinbtn'
 import { Flex, Box, Spacer, Button,Drawer,
   DrawerBody,
   DrawerFooter,
@@ -110,7 +111,7 @@ const Header = ({setSearchTerm}) => { // Accept props
               <Text ml={4}>Download</Text>
                   </Box>
                   
-                  {currentUser?(<Button onClick={handleLogout}>Logout</Button>):(<Link to='/signup'><Signin /></Link>)}
+                  {currentUser?(<Button onClick={handleLogout}>Logout</Button>):(<Link to='/Login'><Login /></Link>)}
           </VStack>
         </DrawerBody>
       </DrawerContent>

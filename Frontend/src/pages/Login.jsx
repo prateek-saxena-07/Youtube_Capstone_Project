@@ -7,7 +7,7 @@ import {
   Input,
   Stack,
   Text,
-  useToast,
+  Heading
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { loginStart,loginSuccess,loginFail } from "../utils/userSlice";
@@ -54,11 +54,17 @@ export default function Login() {
     }
     return (
         <>
+            <center>
+                <Heading as='h2' size='2xl' noOfLines={1}>Login</Heading>
+            </center>
             <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+                
                 <form onSubmit={handleSubmit}>
                 
                     <Stack>
+                        
                         <FormLabel htmlFor="">Username</FormLabel><Input name="username" type="text" onChange={handleChange} value={login.username} />
+        
                         <FormLabel htmlFor="">Password</FormLabel><Input type="password" onChange={handleChange} name="password" value={login.password} />
                         <Button type="submit" colorScheme="teal">LogIn</Button>
                     </Stack>

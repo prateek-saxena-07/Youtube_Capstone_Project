@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import { Box,Stack,FormLabel,FormControl,Input,Text,Button } from "@chakra-ui/react";
+import { Box,Stack,FormLabel,FormControl,Input,Text,Button,Heading } from "@chakra-ui/react";
 
 
 const SignUp = () => {
@@ -27,7 +27,8 @@ const SignUp = () => {
             credentials:'include',
         });
         
-        if (!response.ok) {
+            if (!response.ok) {
+            alert('all fields required')
         throw new Error('Failed to submit form'); // Handle non-2xx responses
                             }
 
@@ -52,13 +53,17 @@ const SignUp = () => {
 
     return (
         <>
+            <center>
+                 <Heading as='h2' size='2xl' noOfLines={1}>Sign uP</Heading>
+            </center>
             <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+                
                 <form onSubmit={handleSubmit}>
                     <Stack>
                         <FormLabel htmlFor="">Username:</FormLabel><Input name="username" value={formData.username} onChange={handleChange} />
-                        <FormLabel htmlFor="">Email:<Input name="email" value={formData.email} onChange={handleChange}/></FormLabel>
+                        <FormLabel htmlFor="">Email:<Input name="email" value={formData.email} onChange={handleChange} type="email"/></FormLabel>
                         <FormLabel htmlFor="">Password:<Input type="password" name="password" value={formData.password} onChange={handleChange}/></FormLabel>
-                        <Button type="submit" colorScheme="teal">Submit</Button>
+                        <Button type="submit" colorScheme="teal">Register</Button>
                         <Link to='/login' ><Input type="button" value={"Login"} /></Link>
                     </Stack>
                     
