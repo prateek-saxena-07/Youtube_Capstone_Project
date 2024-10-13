@@ -63,10 +63,10 @@ export default function ChannelVideoCard(props) {
                 </Text>
               </Box>
 
-              <Text color="blue.600" fontSize="l">
+              <Text fontSize={12} fontWeight={100}>
                 {props.props.channel}
               </Text>
-              <Text>{(props.props.views)/2 + " views"} &middot; {format(props.props.createdAt)}</Text>
+              <Text fontSize={12} fontWeight={100}>{(props.props.views)/2 + " views"} &middot; {format(props.props.createdAt)}</Text>
             </Stack>
             <Spacer />
 

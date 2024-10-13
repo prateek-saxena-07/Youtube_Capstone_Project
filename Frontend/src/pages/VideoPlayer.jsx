@@ -80,18 +80,30 @@ const VideoPageLayout = () => {
   return (
     <>
       <Header />
-      <Grid
-        templateAreas={`"video video recommendations" 
-          "description description recommendations"
-           "comments comments recommendations"`}
-        gridTemplateRows={'auto auto 1fr'}
-        gridTemplateColumns={'3fr 1fr'}
-        gap={6}
-        padding={6}
-      >
+     <Grid
+  templateAreas={{
+    base: `"video" 
+           "description"
+           "comments"
+           "recommendations"`,
+    md: `"video video recommendations"
+         "description description recommendations"
+         "comments comments recommendations"`,
+  }}
+  gridTemplateRows={{
+    base: 'auto auto 1fr',
+    md: 'auto auto 1fr',
+  }}
+  gridTemplateColumns={{
+    base: '1fr', // One column for mobile screens
+    md: '3fr 1fr', // Wider screens (e.g., tablets and laptops)
+  }}
+  gap={6}
+  padding={6}
+>
         {/* Video Player */}
-        <Box gridArea="video" bg="gray.900" height="400px" borderRadius="md">
-          <iframe
+        <Box gridArea="video" bg="gray.900" height="400px" borderRadius="md" width={'700px'}>
+          <video
             width="100%"
             height="100%"
             src={currentVideo.videoUrl}
@@ -103,23 +115,23 @@ const VideoPageLayout = () => {
         </Box>
 
         {/* Video Description Section */}
-        <Box gridArea="description" padding="4">
+        <Box gridArea="description" padding="4" pb={0} >
           <VStack align="stretch" spacing={4}>
-            <Box>Title of the video</Box>
+            <Box fontSize={20} fontWeight={'bold'}>Title of the video</Box>
             <Box display={'flex'} justifyContent={'space-between'}>
               {/* for channel image channel name subscribe button like dislikes and other icons.. */}
 
 
-              <Box display={'flex'} gap={4}>
+              <Box display={'flex'} gap={0.5}>
                 {/* channel image name  subs */}
-                <Image src={profile} height={'30px'} width={'30px'} />
-                <Text>{name}</Text>
+                <Image src={profile} height={'35px'} width={'35px'} border={'solid 1px black'} borderRadius={'50px'} />&nbsp;
+                <Text fontWeight={'bold'}>{name}</Text>&nbsp;
                  <Button borderRadius={'30px'} color={"black"} background={'Gray'}>
                     Subscribe
                   </Button>
               </Box>
 
-              <Box>
+              <Box fontSize={4}>
                 {/* likes dislike,share and other icons */}
                 {currentUser && currentVideo ? (
                 <Button onClick={handleLike} leftIcon={
@@ -140,17 +152,18 @@ const VideoPageLayout = () => {
                 <Button leftIcon={<FontAwesomeIcon icon={faThumbsDownOutline} />} borderRadius={'50px'}>{currentVideo.dislikes.length}</Button >
                 )}
                 &nbsp;
-                <Button borderRadius={'50px'}><PiShareFat/>&nbsp;Share</Button>&nbsp;
-                <Button borderRadius={'50px'}><TfiDownload/>&nbsp;Download</Button>&nbsp;
-                <Button borderRadius={'50px'}><FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon></Button>
+                <Button borderRadius={'50px'} fontSize={15}><PiShareFat/>&nbsp;Share</Button>&nbsp;
+                <Button borderRadius={'50px'} fontSize={15}><TfiDownload/>&nbsp;Download</Button>&nbsp;
+                <Button borderRadius={'50px'} fontSize={13}><FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon></Button>
               </Box>
             </Box>
 
-            <Box bg={'gray.600'} borderRadius={'30px'}>
+            <Box bg={'gray.600'} borderRadius={'10px'} p={1} lineHeight={1} >
               {/* For views date posted on, description  */}
 
-              <Text><span>{currentVideo.views + " "}views</span><span>{" " + format(currentVideo.createdAt)}</span></Text>
-              <Text>{currentVideo.desc}</Text>
+              <Text ml={4} fontWeight={'bold'}>{currentVideo.views + " "}views &middot;{" " + format(currentVideo.createdAt)}&nbsp;&nbsp;&nbsp;#Youtube</Text>
+              <Text ml={6} mt={2} pb={0} fontSize={13} fontWeight={400}>{currentVideo.desc}</Text>
+              <Text ml={8} fontSize={13} fontWeight={'bold'}>...more</Text>
               
             </Box>
 
@@ -158,10 +171,10 @@ const VideoPageLayout = () => {
         </Box>
 
         {/* Comments Section */}
-        <Box gridArea="comments" padding="4" bg="black.100" borderRadius="md">
+        <Box gridArea="comments" padding="4" bg="black.100" borderRadius="md" pt={1}>
           <Box display={'flex'} gap={16}>
             <Text fontSize="xl" fontWeight="bold" mb={4}>{numberOfComments + " "}Comments</Text>
-            <Box display={'flex'}>
+            <Box display={'flex'} fontSize={18} pt={0.5}>
               <MdOutlineSort size={28} />
               Sort By
             </Box>
@@ -170,7 +183,7 @@ const VideoPageLayout = () => {
         </Box>
 
         {/* Recommended Videos */}
-        <Box gridArea="recommendations" padding="4"  borderRadius="md"  height="full" overflowY="auto">
+        <Box gridArea="recommendations" padding="1"  borderRadius="md"  height="full" overflowY="auto" overflowX='auto'>
           <Text fontSize="xl" fontWeight="bold" mb={4}>Recommended Videos</Text>
            <Box pb={4} >
                 {/* Filters */}
@@ -192,14 +205,7 @@ const VideoPageLayout = () => {
               
         </Box>
           <VStack spacing={4} align="stretch">
-            <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
-              <Box ml={3}>
-                <Text fontWeight="bold">React.js Basics</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">100K views · 1 week ago</Text>
-              </Box>
-            </Flex>
+            
             <Flex>
               <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
@@ -256,7 +262,7 @@ const VideoPageLayout = () => {
           </VStack>
         </Box>
       </Grid>
-    </>
+    </> 
   );
 };
 

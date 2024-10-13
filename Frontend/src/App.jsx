@@ -81,9 +81,8 @@ const App = () => {
                 color='blackAlpha.700'
                 fontWeight='bold'
             >
-                {/* <GridItem pl={2} area={'header'}>
-                    <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
-                </GridItem> */}
+                
+                
                 <GridItem pl='2' area={'sidebar'} pt={6} mt={0}>
                     <Sidebar  />
                 </GridItem>

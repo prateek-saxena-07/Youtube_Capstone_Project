@@ -27,21 +27,21 @@ export default function VideoCard(props) {
       height={"40px"}
                 mr={2}
                 ml={2}
-      mb={6}        />
+                mb={6}  />
     
-    <Stack mt='6' ml={4} spacing='3' maxWidth="200px">
-    <Box >
-      <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
+    <Stack mt='4' ml={3} spacing='3' maxWidth="200px">
+    <Box lineHeight={1} >
+      <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis" fontWeight={900}>
         {props.props.title}
       </Text>
     </Box>
       
-      <Text color='blue.600' fontSize='l'>
+      <Text color='gray'  fontSize={12} fontWeight={100}>
         {props.props.channel}
       </Text>
-      <Text>
-      {(props.props.views/2)+" views"} &middot; {format(props.props.createdAt)}
-      </Text>
+     <Text fontSize={12} fontWeight={100} isTruncated>
+  {(props.props.views / 2) + " views"} &middot; {format(props.props.createdAt)}
+</Text>
               </Stack>
               <Spacer/>
               <Stack mr={4} mb={12}>
