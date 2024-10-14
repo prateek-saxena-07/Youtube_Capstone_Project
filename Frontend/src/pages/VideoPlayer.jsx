@@ -107,7 +107,7 @@ const VideoPageLayout = () => {
             width="100%"
             height="100%"
             src={currentVideo.videoUrl}
-           
+            controls
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -207,52 +207,52 @@ const VideoPageLayout = () => {
           <VStack spacing={4} align="stretch">
             
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/erLk59H86ww/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
+                <Text fontWeight="bold">Star Wars: The Force Awak...</Text>
+                <Text fontSize="sm" color="gray.500">Star Wars</Text>
                 <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
               </Box>
             </Flex>
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/oZlYPyJuMM8/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+                <Text fontWeight="bold">Pete Davidson's Best Roast....</Text>
+                <Text fontSize="sm" color="gray.500">Comedy Central</Text>
+                <Text fontSize="sm" color="gray.500">14M views · 3 years ago</Text>
               </Box>
             </Flex>
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/9fXTKaHrxT8/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+                <Text fontWeight="bold">Can 1 Cop Defend Himself....</Text>
+                <Text fontSize="sm" color="gray.500">Jubilee</Text>
+                <Text fontSize="sm" color="gray.500">1.7M views · 7 days ago</Text>
               </Box>
             </Flex>
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/Yxp68UQOy0M/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+                <Text fontWeight="bold">North Korea In War Mode |Artillery units...</Text>
+                <Text fontSize="sm" color="gray.500">StudyIQ IAS</Text>
+                <Text fontSize="sm" color="gray.500">556K views · 10 hours ago</Text>
               </Box>
             </Flex>
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/1GOGtFZHFQc/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+                <Text fontWeight="bold">Comedy Innings with...</Text>
+                <Text fontSize="sm" color="gray.500">Kapil Sharma</Text>
+                <Text fontSize="sm" color="gray.500">3M views · 4 days ago</Text>
               </Box>
               
             </Flex>
             <Flex>
-              <Image src="https://via.placeholder.com/120" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
+              <Image src="http://i3.ytimg.com/vi/WxFZGuVxaMk/hqdefault.jpg" alt="Thumbnail" width="120px" height="90px" borderRadius="md" />
               <Box ml={3}>
-                <Text fontWeight="bold">Advanced React Techniques</Text>
-                <Text fontSize="sm" color="gray.500">Awesome Coder</Text>
-                <Text fontSize="sm" color="gray.500">50K views · 2 days ago</Text>
+                <Text fontWeight="bold">Trump vs Harris 2024</Text>
+                <Text fontSize="sm" color="gray.500">Jubilee</Text>
+                <Text fontSize="sm" color="gray.500">3.1M views · 3 weeks ago</Text>
               </Box>
             </Flex>
           

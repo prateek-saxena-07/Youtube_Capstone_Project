@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { Box,Stack,FormLabel,FormControl,Input,Text,Button,Heading } from "@chakra-ui/react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHouse} from '@fortawesome/free-solid-svg-icons'
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -54,9 +55,9 @@ const SignUp = () => {
     return (
         <>
             <center>
-                 <Heading as='h2' size='2xl' noOfLines={1}>Sign uP</Heading>
+                 <Heading as='h2' size='2xl' >Sign uP</Heading>
             </center>
-            <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+            <Box maxWidth="400px" mx="auto" mt={10} p={4} borderWidth={1} borderRadius="md" mb={10}>
                 
                 <form onSubmit={handleSubmit}>
                     <Stack>
@@ -69,6 +70,9 @@ const SignUp = () => {
                     
                            </form>
             </Box>
+            <center>
+                <Link to={'/'}>Back To <FontAwesomeIcon icon={faHouse} /> </Link>
+            </center>
         </>
     )
 }

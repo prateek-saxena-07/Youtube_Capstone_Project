@@ -12,6 +12,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { loginStart,loginSuccess,loginFail } from "../utils/userSlice";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHouse} from '@fortawesome/free-solid-svg-icons'
 
 export default function Login() {
     const [login, setLogin] = useState({username:'',password:''});
@@ -55,9 +58,9 @@ export default function Login() {
     return (
         <>
             <center>
-                <Heading as='h2' size='2xl' noOfLines={1}>Login</Heading>
+                <Heading as='h2' size='2xl' >Login</Heading>
             </center>
-            <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md">
+            <Box maxWidth="400px" mx="auto" mt={8} p={4} borderWidth={1} borderRadius="md" mb={10}>
                 
                 <form onSubmit={handleSubmit}>
                 
@@ -70,6 +73,9 @@ export default function Login() {
                     </Stack>
                 </form>
             </Box>
+            <center>
+                <Link to={'/'}>Back To <FontAwesomeIcon icon={faHouse} /> </Link>
+            </center>
         </>
     )
 }

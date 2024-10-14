@@ -19,15 +19,29 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import VideoUpdateModal from "./VideoUpdateModal";
 import VideoDeleteModal from "./VideoDeleteModal";
 import { Link } from "react-router-dom";
-import {format} from "timeago.js";
+import { format } from "timeago.js";
+import { useEffect} from "react";
 
 export default function ChannelVideoCard(props) {
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  // const [open, setOpen] = useState(false);
-  // const handleUpdate = (e) => {
-  //   if (open) { setOpen(false); onClose() }
-  //   else { setOpen(true); onOpen(); }
-  // };
+  
+
+  const [videoChannel, setVideoChannel] = useState('');
+  
+useEffect(() => {
+    const profile = async () => {
+      const response = await fetch(`http://localhost:5100/api/v1/user/${props.props.userId}`);
+
+      const data = await response.json()
+      
+      console.log(data);
+      setVideoChannel(data.profileImg)
+      
+
+};
+
+
+    profile();
+  },[props]);
 
   return (
     <>
@@ -46,7 +60,7 @@ export default function ChannelVideoCard(props) {
 
           <HStack>
             <Image
-              src={props.props.imgUrl}
+              src={videoChannel}
               alt={props.props.title}
               borderRadius={"50%"}
               width={"40px"}
@@ -57,7 +71,7 @@ export default function ChannelVideoCard(props) {
             />
 
             <Stack mt="6" ml={4} spacing="3" maxWidth="200px">
-              <Box>
+              <Box width={'100px'}>
                 <Text whiteSpace="nowrap" overflow="hidden" textOverflow="ellipsis">
                   {props.props.title}
                 </Text>
@@ -66,7 +80,7 @@ export default function ChannelVideoCard(props) {
               <Text fontSize={12} fontWeight={100}>
                 {props.props.channel}
               </Text>
-              <Text fontSize={12} fontWeight={100}>{(props.props.views)/2 + " views"} &middot; {format(props.props.createdAt)}</Text>
+              <Text fontSize={12} fontWeight={100} pb={2}>{(props.props.views)/2 + " views"} &middot; {format(props.props.createdAt)}</Text>
             </Stack>
             <Spacer />
 
