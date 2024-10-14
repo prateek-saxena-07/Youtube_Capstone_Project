@@ -17,7 +17,7 @@ import { setVideos } from '../utils/homeVideosSlice';
 
 export default function VideoUpdateModal({videoId}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [update, setUpdate] = useState({ title: '', desc: '' });
+  const [update, setUpdate] = useState({ title: '', desc: '',imgUrl:'' });
 
   const dispatch = useDispatch();
 
@@ -64,6 +64,8 @@ export default function VideoUpdateModal({videoId}) {
             <Input onChange={handleChange} name='title' value={update.title} type='text'></Input>
              <FormLabel>Description</FormLabel>
             <Input onChange={handleChange} name='desc' value={update.desc} type='text'></Input>
+            <FormLabel>Thumbnail</FormLabel>
+            <Input onChange={handleChange} name='imgUrl' value={update.imgUrl} type='text'></Input>
           </ModalBody>
 
           <ModalFooter>
