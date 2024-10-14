@@ -13,10 +13,7 @@ export default function VideoCard(props) {
 useEffect(() => {
     const profile = async () => {
       const response = await fetch(`http://localhost:5100/api/v1/user/${props.props.userId}`);
-
       const data = await response.json()
-      
-      console.log(data);
       setVideoChannel(data.profileImg)
       
 

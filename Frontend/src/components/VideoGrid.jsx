@@ -2,7 +2,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 import VideoCard from './VideoCard.jsx';
 import { Link } from "react-router-dom";
 
-const VideoGrid = ({ videos }) => {
+const VideoGrid = ({ videos,key }) => {
 
     // Component renders the video Grid  on home page
     return (<>

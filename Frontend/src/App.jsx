@@ -15,8 +15,6 @@ const App = () => {
     const [activeFilter, setActiveFilter] = useState("all");
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.homeVideosGrid.videoData);
-    console.log(videos);
-    console.log(activeFilter)
     
     const getFilteredItems = (videos) => {
     // If the active filter is 'all', return all videos
@@ -47,7 +45,6 @@ const App = () => {
             try {
                 const response = await fetch('http://localhost:5100/api/v1/temp/getVideos');
                 const data = await response.json();
-                console.log(data.data);
                 dispatch(setVideos(data.data));
             } catch (err) {
                 setError(err.message || 'failed to fetch Videos');
