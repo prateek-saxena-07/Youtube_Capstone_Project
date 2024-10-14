@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs'
 import { createError } from "../error.js";
 import jwt from 'jsonwebtoken';
 
+//Sigin and signup functionality using Jwt authentication 
+
 export const Register = async(req,res,next) => {
     try {
         const { username }=req.body

@@ -1,27 +1,7 @@
 import Video from '../model/video.model.js'
 import { createError } from '../error.js';
 
-// export const addVideo=async (req, res) => {
-//     const { title, videoUrl,channel,thumbnail,likes,disLikes,comments,views } = req.body;
-//     try {
-//         const newVid = await Video.create({
-//             title: title,
-//             videoUrl: videoUrl,
-//             channel: channel,
-//             thumbnail: thumbnail,
-//             views: views,
-//             likes: likes,
-//             disLikes: disLikes,
-//             comments:comments
-//         });
-//         res.status(201).json(newVid)
-//     }
-//     catch (err)
-//     {   console.log(err)
-//         res.status(500).json({ message: "Error creating video" ,err:err});
-//     }
-    
-// }
+//Controller for add ,delete update and get videos all or by id and add views to the particular video
 
 export const getVideos = async (req, res) => {
     try {
@@ -35,7 +15,8 @@ export const getVideos = async (req, res) => {
     }
 
 }
-// =================================
+
+
 export const addVideos = async (req, res, next) => {
    const newVideo = new Video({ userId: req.user.id, ...req.body });
    try {
@@ -45,6 +26,8 @@ export const addVideos = async (req, res, next) => {
      next(err);
    }
 }
+
+
 export const updateVideos = async (req, res, next) => {try {
   const video = await Video.findById(req.params.id);
   if (!video) return next(createError(404, "Video not found!"));
@@ -68,6 +51,7 @@ export const updateVideos = async (req, res, next) => {try {
   }
 };
 
+
 export const deleteVideos = async (req, res, next) => { 
  try {
    const video = await Video.findById(req.params.id);
@@ -90,6 +74,7 @@ export const deleteVideos = async (req, res, next) => {
    next(err);
      }
  };
+
 
 export const addView = async (req, res, next) => {
   try {

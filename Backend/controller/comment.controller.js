@@ -2,6 +2,8 @@ import { createError } from "../error.js";
 import Comment from "../model/comment.model.js";
 import Video from "../model/video.model.js";
 
+//Controller for adding ,deleting and fetching all comments for videos
+
 export const addComment = async (req, res, next) => {
   const newComment = new Comment({ ...req.body, userId: req.user.id });
   try {
@@ -38,6 +40,7 @@ export const deleteComment = async (req, res, next) => {
     next(err);
   }
 };
+
 
 export const getComments = async (req, res, next) => {
   try {

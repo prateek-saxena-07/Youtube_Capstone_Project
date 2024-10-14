@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { createError } from '../error.js';
 
+//Middleware to authenticate 
+
 export const verifyToken = (req, res, next) => {
     
     const token = req.cookies.access_token;

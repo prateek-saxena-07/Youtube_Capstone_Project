@@ -12,14 +12,17 @@ dotenv.config();
 const PORT = process.env.PORT || 5100;
 const app = new express();
 
-
+//Middlewares for parsing json,cookies and cors
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'http://localhost:5173',credentials: true }));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+
+//routes
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/temp', Video);
 app.use('/api/v1/comments',comment)
+
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;
@@ -31,7 +34,12 @@ app.use((err, req, res, next) => {
     });
 })
 
+
+//starts the server
 app.listen(PORT, () => {
     console.log(`Server Started at http://localhost:${PORT}`);
     connectDB();
 });
+
+
+// Server.js is entrypoint for backend
