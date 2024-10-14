@@ -13,6 +13,7 @@ import { PiShareFat } from "react-icons/pi";
 import { TfiDownload } from "react-icons/tfi";
 import { format } from 'timeago.js';
 import { MdOutlineSort } from "react-icons/md";
+
 const VideoPageLayout = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
@@ -22,7 +23,7 @@ const VideoPageLayout = () => {
   const [name, setName] = useState('');
   const[numberOfComments,setNumberOfComments]=useState(0)
 
-  useEffect(() => {
+useEffect(() => {
     const fetchVideo = async () => {
       const response = await fetch(`http://localhost:5100/api/v1/temp/find/${params.id}`);
       const data = await response.json();
@@ -31,14 +32,14 @@ const VideoPageLayout = () => {
     fetchVideo();
   }, [dispatch, params.id]);
 
-  useEffect(() => {
+useEffect(() => {
     const updateViews = async () => {
       await fetch(`http://localhost:5100/api/v1/temp/view/${params.id}`, { method: 'PUT' });
     };
     updateViews();
   }, [params.id]);
 
-  const handleLike = async () => {
+const handleLike = async () => {
     await fetch(`http://localhost:5100/api/v1/user/like/${params.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -47,7 +48,7 @@ const VideoPageLayout = () => {
     dispatch(like(currentUser._id));
   };
 
-  const handleDislike = async () => {
+const handleDislike = async () => {
     await fetch(`http://localhost:5100/api/v1/user/dislike/${params.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -56,14 +57,13 @@ const VideoPageLayout = () => {
     dispatch(dislike(currentUser._id));
   };
 
+  //Fetches comment for particular video being played and also fetches user logo for comment input profile
    useEffect(() => {
     const profile = async () => {
       const response = await fetch(`http://localhost:5100/api/v1/user/${currentVideo.userId}`);
       const commentres=await fetch(`http://localhost:5100/api/v1/comments/${params.id}`)
       const data = await response.json()
       const commentdata = await commentres.json();
-      // console.log(data.profileImg)
-      // console.log(commentdata)
       setProfile(data.profileImg);
       setName(data.channel_name)
       setNumberOfComments(commentdata.length)
@@ -73,6 +73,7 @@ const VideoPageLayout = () => {
     profile();
   },[currentVideo]);
 
+// Checks if video being played loaded yet so no boundary error occur
   if (!currentVideo) {
     return <div>Loading...</div>;
   }
@@ -182,7 +183,7 @@ const VideoPageLayout = () => {
           <Comments videoId={params.id} />
         </Box>
 
-        {/* Recommended Videos */}
+        {/* Recommended Videos with dummy data*/}
         <Box gridArea="recommendations" padding="1"  borderRadius="md"  height="full" overflowY="auto" overflowX='auto'>
           <Text fontSize="xl" fontWeight="bold" mb={4}>Recommended Videos</Text>
            <Box pb={4} >

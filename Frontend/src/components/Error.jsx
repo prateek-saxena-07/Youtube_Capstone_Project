@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Button, Heading, Text, VStack, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import viteLogo from '/vite.svg'
+import viteLogo from '/vite.svg';
+
 const ErrorPage = () => {
+
+  //error page undefined routes
   return (
     <Box 
       height="100vh"

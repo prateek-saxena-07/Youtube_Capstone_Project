@@ -2,11 +2,9 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  FormControl,
   FormLabel,
   Input,
   Stack,
-  Text,
   Heading
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
@@ -18,13 +16,15 @@ import {faHouse} from '@fortawesome/free-solid-svg-icons'
 
 export default function Login() {
     const [login, setLogin] = useState({username:'',password:''});
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+
     const handleChange = (e) => {
         setLogin({...login,[e.target.name]:e.target.value})
         
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(loginStart());
@@ -55,6 +55,8 @@ export default function Login() {
         
         
     }
+
+    // Modal that handle login 
     return (
         <>
             <center>

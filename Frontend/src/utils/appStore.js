@@ -44,3 +44,6 @@ const appStore = configureStore({
 export const persistor = persistStore(appStore);
 
 export default appStore;
+
+
+// Redux store with persisted data handling 

@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { VStack,Box, Spacer,Text } from '@chakra-ui/react';
 const Sidebar = () =>
 {
-    return (<>
-          <VStack
+
+  //Static sidebar
+  return (<>
       
-      
+      <VStack
       align="start"
       p={0}
       h="100vh"

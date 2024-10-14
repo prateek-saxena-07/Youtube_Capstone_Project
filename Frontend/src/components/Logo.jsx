@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
 
 export default function Logo() {
+    // Youtube Logo
     return (<>
         <Link to='/'>
             <Box className="logo" style={{display:'flex'}} mt={1}>

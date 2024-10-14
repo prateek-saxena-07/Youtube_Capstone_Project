@@ -11,7 +11,9 @@ import Login from './pages/Login.jsx'
 import VideoPlayer from './pages/VideoPlayer.jsx'
 import Channel from './pages/Channel.jsx';
 import { PersistGate } from 'redux-persist/integration/react'
-import ErrorPage from './components/Error.jsx'
+import ErrorPage from './components/Error.jsx';
+
+//Theme configuration
 const theme = extendTheme({
   styles: {
     global: (props) => ({
@@ -23,6 +25,7 @@ const theme = extendTheme({
   },
 });
 
+//Router configuration
 const appRouter = createBrowserRouter([
  
   {
@@ -53,7 +56,7 @@ const appRouter = createBrowserRouter([
   
 ])
 
-
+// Root Component
 
 createRoot(document.getElementById('root')).render(
   

@@ -8,7 +8,6 @@ import {
     ModalCloseButton,
     useDisclosure,
     Button,
-    Text,
     Avatar,
     FormLabel,
     Input
@@ -19,18 +18,22 @@ import { useNavigate } from 'react-router';
 import { loginSuccess } from '../utils/userSlice';
 
 const ChannelModal = () => {
+
      const { currentUser } = useSelector(state => state.user);
     const [channelData, setChannelData] = useState({ channel_name: '', handle: '',profileImg:currentUser.profileImg,banner:currentUser.banner});
     const { isOpen, onOpen, onClose } = useDisclosure();
-   
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
 
     const handleChange = (e) => {
         setChannelData({ ...channelData, [e.target.name]: e.target.value });
     };
 
+
     const handleUpdates = async () => {
+        //handles updates when new channel is created
+        
         try {
             const response = await fetch(`http://localhost:5100/api/v1/user/${currentUser._id}`, {
                 method: 'PATCH',
@@ -48,6 +51,7 @@ const ChannelModal = () => {
         }
     };
 
+
     const handleAvatarClick = () => {
         // Check if the user already has a channel
         if (currentUser.channel_name || currentUser.handle) {
@@ -57,9 +61,11 @@ const ChannelModal = () => {
         }
     };
 
+
     return (
         <>
             {/* Conditionally redirect or open modal */}
+
             <Avatar onClick={handleAvatarClick} cursor="pointer" src={currentUser.profileImg} size={'sm'}/>
 
             <Modal isOpen={isOpen} onClose={onClose}>

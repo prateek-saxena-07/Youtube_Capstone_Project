@@ -12,7 +12,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
@@ -23,33 +22,25 @@ import { format } from "timeago.js";
 import { useEffect} from "react";
 
 export default function ChannelVideoCard(props) {
-  
 
-  const [videoChannel, setVideoChannel] = useState('');
-  
+const [videoChannel, setVideoChannel] = useState('');
+
 useEffect(() => {
     const profile = async () => {
       const response = await fetch(`http://localhost:5100/api/v1/user/${props.props.userId}`);
-
-      const data = await response.json()
-      
-      console.log(data);
-      setVideoChannel(data.profileImg)
-      
-
+      const data = await response.json();
+      setVideoChannel(data.profileImg);
 };
-
-
-    profile();
-  },[props]);
+profile();
+},[props]);
 
   return (
     <>
       <Card boxShadow={"none"}>
+        {/* Video tile on channel  */}
         <CardBody p={0}>
-          
           <Link to={`/video/${props.props._id}`}>
-               <Image
+              <Image
             src={props.props.imgUrl}
             alt={props.props.title}
             borderRadius="lg"
@@ -84,7 +75,7 @@ useEffect(() => {
             </Stack>
             <Spacer />
 
-            {/* Menu attached to the icon */}
+            {/* Menu attached to the icon  to update and delete videos by authorize user on channel*/}
             <Stack mr={4} mb={12}>
               <Menu >
                 <MenuButton as="button" >

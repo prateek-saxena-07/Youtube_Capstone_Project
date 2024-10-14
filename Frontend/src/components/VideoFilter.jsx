@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
 const VideoFilter = ({setFilter}) => {
-
+// video filter component on home page lifting props up to home page
     return (<>
         <ButtonGroup pl={6}>
             <Button onClick={(e)=>setFilter(e.target.textContent.toLowerCase())}>All</Button>

@@ -1,4 +1,4 @@
-import { Grid,GridItem,ButtonGroup,Button,HStack,VStack,Image,Box ,Text,Heading, Tab, Tabs, TabList} from "@chakra-ui/react"
+import { ButtonGroup,Button,HStack,VStack,Image,Box ,Text,Heading, Tab, Tabs, TabList} from "@chakra-ui/react"
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ChannelVideoGrid from "../components/ChannelVideoGrid";
@@ -11,24 +11,19 @@ const Channel = () => {
     const { currentUser } = useSelector((state) => state.user);
     const { videoData } = useSelector((state) => state.homeVideosGrid)
     const params = useParams();
-    //const videoArr = videoData || [];for error debugging
     const videoArr = videoData
-    // console.log(typeof(videoData),videoData);
     const currentUservideos = videoArr.filter(video => (params.id === video.userId));  //filtering according to user ID
-
-
-    //Todo add filter on channel page as well
-    
     const navigate = useNavigate();
-    // console.log(currentUser)
+   
 
- if (!currentUser) {
+// This checks if there is no currentUser (i.e., the user is not logged in or the user data hasn't been fetched yet).
+if (!currentUser) {
         // Redirect to home page
         navigate('/');
         return null; // Prevent rendering the rest of the component
     }
 
-
+//Renders the channel component with user videos and other details
     return (<>
         
         <Header></Header>

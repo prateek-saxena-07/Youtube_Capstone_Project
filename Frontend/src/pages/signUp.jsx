@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import { Box,Stack,FormLabel,FormControl,Input,Text,Button,Heading } from "@chakra-ui/react";
+import { Box,Stack,FormLabel,Input,Button,Heading } from "@chakra-ui/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHouse} from '@fortawesome/free-solid-svg-icons'
 
@@ -15,8 +15,8 @@ const SignUp = () => {
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
+
     const handleSubmit = async (e) => {
-        
         e.preventDefault();
 
         try{const response=await fetch('http://localhost:5100/api/v1/auth/register', {
@@ -51,7 +51,7 @@ const SignUp = () => {
 
        
    }
-
+//Modal that register user and save the user's data in DB
     return (
         <>
             <center>

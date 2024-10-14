@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 
 
@@ -10,13 +10,16 @@ const Search = ({ setSearchTerm = () => {} }) => { //default to a no-op function
     const handleSearchClick = () => {
         setSearchTerm(inputValue); // Update searchTerm on button click
     };
+
     useEffect(() => {
         if (inputValue === '') {
             setSearchTerm(''); // Automatically send empty state if input is cleared
         }
     }, [inputValue, setSearchTerm]);
 
+
     return (
+        // searchbar Component and lifting state up to app so search term can be used
         <>
             <Box className="search" mt={1} onClick={handleSearchClick}  display="flex" 
                 alignItems="center" 

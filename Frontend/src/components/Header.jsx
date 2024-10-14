@@ -3,17 +3,17 @@ import Logo from './Logo';
 import { Signin,Signup } from './Signinbtn';
 import { Flex, Box, Spacer, Button,Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton, useDisclosure,VStack,Text,Divider
+  useDisclosure,
+  VStack,
+  Text,
+  Divider
 } from '@chakra-ui/react';
   import {faCompass, faGamepad, faBook, faAddressCard, faBacon, faCab, faDashboard, faDownload,faBars, faVideo,faHouse  } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MdOutlineNotificationsNone } from "react-icons/md";
-
-
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../utils/userSlice';
@@ -22,7 +22,9 @@ import UploadModal from './UploadModal';
 import ColorModeToggleButton from './Theme';
 
 
-const Header = ({setSearchTerm}) => { // Accept props
+
+const Header = ({ setSearchTerm }) => { // Accept props from app ,lifting the props to app.jsx
+  
     const { currentUser } = useSelector(state => state.user);
      const { isOpen, onOpen, onClose } = useDisclosure()
   
@@ -40,7 +42,9 @@ const Header = ({setSearchTerm}) => { // Accept props
 
 <Button  onClick={onOpen}>
             <FontAwesomeIcon icon={faBars} />
-      </Button>
+          </Button>
+
+          {/* Drawer for sidebar and displaying menu  */}
       <Drawer placement={'left'} onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent >
@@ -53,7 +57,6 @@ const Header = ({setSearchTerm}) => { // Accept props
             </Box>
           </Box>
         </DrawerHeader>
-        
         <DrawerBody>
           <VStack align="start" spacing={4} w="full">
             <Link to='/'>
@@ -115,17 +118,19 @@ const Header = ({setSearchTerm}) => { // Accept props
         </DrawerBody>
       </DrawerContent>
     </Drawer>
-
+{/* Sidebar drawer ends */}
 
                 <Spacer />
                 <Box>
-                    <Logo />
+                    <Logo /> 
                 </Box>
                 <Spacer />
                 <Spacer />
                 <Spacer />
-                <Box width='55%'>
-                    <Search  setSearchTerm={setSearchTerm} /> {/* Pass props to Search */}
+          <Box width='55%'>
+
+            {/* Searchbar */}
+                    <Search  setSearchTerm={setSearchTerm} /> {/* Passes props to Search */}
                 </Box>
                 <Spacer />
                 <Spacer />
@@ -134,7 +139,8 @@ const Header = ({setSearchTerm}) => { // Accept props
                 <Spacer />
                 <Spacer />
                 <Spacer />
-                <Spacer />
+          <Spacer />
+          
           <Box display={'flex'} justifyContent="space-between" alignItems="center" gap={4} >
             <ColorModeToggleButton/>
                     {currentUser ? (

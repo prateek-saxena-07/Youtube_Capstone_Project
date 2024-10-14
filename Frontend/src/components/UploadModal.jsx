@@ -12,11 +12,8 @@ import {
   Input,
   FormControl,
   FormLabel,
-  Progress,
 } from "@chakra-ui/react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload, faVideo } from "@fortawesome/free-solid-svg-icons";
 import app from "../../firebase";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -40,6 +37,7 @@ export default function uploadModal() {
       return { ...prev, [e.target.name]: e.target.value,channel:currentUser.channel_name };
     })
   };
+  
     const handleTags = (e) => {
     setTags(e.target.value.toLowerCase().split(","));
   };
@@ -49,7 +47,8 @@ export default function uploadModal() {
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
-
+    
+    //Method by firebase to upload video and image files
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -84,6 +83,7 @@ export default function uploadModal() {
   useEffect(() => { img && uploadFile(img, "imgUrl") }, [img]);
   
 
+  //Updates the DB with url of the firebase video uploaded file ,images and inputs by user  such as name and description of video
   const handleUpload = async (e) => {
     e.preventDefault();
 
@@ -120,9 +120,12 @@ export default function uploadModal() {
 
    
   }
+
+  //Upload form component 
+
   return (
     <>
-      {/* <FontAwesomeIcon icon={faVideo} cursor={'pointer'} onClick={onOpen}></FontAwesomeIcon> */}
+     
         <BiVideoPlus cursor={'pointer'} onClick={onOpen} size={24} />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -132,11 +135,11 @@ export default function uploadModal() {
           <ModalBody >
             <FormControl>
               <FormLabel>Select Video File</FormLabel>
-              {videoPerc>0?("Uploading" +videoPerc):(<Input type="file" accept="video/*" onChange={e=>setVideo(e.target.files[0])}/>)}
+              {videoPerc>0?("Uploaded"+" "+videoPerc):(<Input type="file" accept="video/*" onChange={e=>setVideo(e.target.files[0])}/>)}
             </FormControl>
           <FormControl>
               <FormLabel>Select Image File</FormLabel>
-              {imgPerc>0?("Uploading"+imgPerc):(<Input type="file" accept="image/*" onChange={e=>setImg(e.target.files[0])} />)}
+              {imgPerc>0?("Uploaded"+" "+imgPerc):(<Input type="file" accept="image/*" onChange={e=>setImg(e.target.files[0])} />)}
             </FormControl>
             <Input type="text" name="title" placeholder="Title" onChange={handleChange}></Input>
             <Input type="text" name="desc" placeholder="Description" onChange={handleChange}></Input>

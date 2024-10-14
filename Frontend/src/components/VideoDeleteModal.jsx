@@ -5,24 +5,24 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-    ModalCloseButton,
-    Button,
+  ModalCloseButton,
+  Button,
   useDisclosure
 } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
 import { setVideos } from '../utils/homeVideosSlice';
 
-export default function VideoDeleteModal({videoId}) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
+export default function VideoDeleteModal({ videoId }) {
+const { isOpen, onOpen, onClose } = useDisclosure();
+const dispatch = useDispatch();
 
-  const handleDelete = async() => {
-  
+
+const handleDelete = async() => {
     try {
       const response = await fetch(`http://localhost:5100/api/v1/temp/${videoId}`, {
         method: 'DELETE',
        headers: {
-                    'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         },
         credentials:'include' 
       },
@@ -39,6 +39,8 @@ export default function VideoDeleteModal({videoId}) {
       console.log(err)
     }
 }
+
+  // Menu option of the modal which deals with deleting video from DB of the authorized user
 
     return (<>
     <Button onClick={onOpen}>Delete</Button>

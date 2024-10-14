@@ -3,8 +3,8 @@ import VideoCard from './VideoCard.jsx';
 import { Link } from "react-router-dom";
 
 const VideoGrid = ({ videos }) => {
-    console.log();
-    console.log(videos);
+
+    // Component renders the video Grid  on home page
     return (<>
         <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }}  spacing='10px' m={6}>
             {[...videos].reverse().map((video) => (<Link to={`/video/${video._id}`}>

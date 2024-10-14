@@ -7,7 +7,9 @@ import { useEffect, useState } from "react";
 
 export default function VideoCard(props) {
 
-  const [videoChannel, setVideoChannel] = useState('');
+  const [videoChannel, setVideoChannel] = useState(''); //State holds channel name for the particular video tile
+
+// Fetches profile image of the channel for particular video props passed
 useEffect(() => {
     const profile = async () => {
       const response = await fetch(`http://localhost:5100/api/v1/user/${props.props.userId}`);
@@ -24,7 +26,7 @@ useEffect(() => {
     profile();
   },[props]);
 
-  
+// Component renders video card on homepage
     return (
         <>
 <Card  boxShadow={'none'}>
@@ -60,7 +62,7 @@ useEffect(() => {
       </Text>
      <Text fontSize={12} fontWeight={100} isTruncated pb={'1'}>
   {(props.props.views / 2) + " views"} &middot; {format(props.props.createdAt)}
-</Text>
+      </Text>
               </Stack>
               <Spacer/>
               <Stack mr={4} mb={12}>

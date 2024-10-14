@@ -7,11 +7,11 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideos } from "./utils/homeVideosSlice";
 
+//Parent/Homepage component
 const App = () => {
-    // const [bars, setBars] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState(""); // State for search term
+    const [searchTerm, setSearchTerm] = useState(""); 
     const [activeFilter, setActiveFilter] = useState("all");
     const dispatch = useDispatch();
     const videos = useSelector((state) => state.homeVideosGrid.videoData);
@@ -65,7 +65,6 @@ const App = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
-//   console.log(searchTerm);
 
     return (
         <>

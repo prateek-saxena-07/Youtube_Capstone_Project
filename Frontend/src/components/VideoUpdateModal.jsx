@@ -15,17 +15,18 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { setVideos } from '../utils/homeVideosSlice';
 
-export default function VideoUpdateModal({videoId}) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [update, setUpdate] = useState({ title: '', desc: '',imgUrl:'' });
 
-  const dispatch = useDispatch();
+export default function VideoUpdateModal({ videoId }) {
 
-  const handleChange = (e) => {
+const { isOpen, onOpen, onClose } = useDisclosure();
+const [update, setUpdate] = useState({ title: '', desc: '',imgUrl:'' });
+const dispatch = useDispatch();
+
+const handleChange = (e) => {
     setUpdate({...update,[e.target.name]:e.target.value});
   }
 
-  const handleUpdate = async() => {
+const handleUpdate = async() => {
   
     try {
       const response = await fetch(`http://localhost:5100/api/v1/temp/${videoId}`, {
@@ -50,7 +51,7 @@ export default function VideoUpdateModal({videoId}) {
 }
 
 
-
+//Component is menu of the modal on channel page containg update to update the video uploaded by authorized user
     return (<>
     <Button onClick={onOpen}>Update</Button>
 

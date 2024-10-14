@@ -19,16 +19,15 @@ import {
   Flex,
   Image,
   Text,
-  IconButton,
-  Divider,
-  
+  IconButton
 } from '@chakra-ui/react';
 
 
 const Comments = ({ videoId }) => {
+
   const dispatch = useDispatch();
   const { comments, loading, error } = useSelector((state) => state.comments);
-  const [newComment, setNewComment] = useState(''); // State to manage new comment input
+  const [newComment, setNewComment] = useState(''); 
   const { currentUser } = useSelector((state) => state.user);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputRef = useRef(null);
@@ -48,12 +47,13 @@ const Comments = ({ videoId }) => {
     fetchComments();
   }, [videoId, dispatch]);
 
+
   const handlePostComment = async () => {
     dispatch(postCommentStart());
     try {
       const commentData = {
         videoId,
-        desc: newComment, // Comment description from input
+        desc: newComment, 
         profileImg:currentUser.profileImg
       };
 
@@ -73,6 +73,7 @@ const Comments = ({ videoId }) => {
     }
   };
 
+
   const handleDeleteComment = async (commentId) => {
     dispatch(deleteCommentStart());
     try {
@@ -89,8 +90,11 @@ const Comments = ({ videoId }) => {
     }
   };
 
+  //waits while comment state is populated to avoid boundary error
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading comments.</p>;
+
 
  const handleFocus = () => {
     setIsInputFocused(true);
@@ -104,6 +108,7 @@ const Comments = ({ videoId }) => {
     }
     setIsInputFocused(false);
   };
+
  const handleButtonClick = () => {
     handlePostComment();
     
@@ -148,7 +153,6 @@ const Comments = ({ videoId }) => {
           key={comment._id}
           pt={6}
           alignItems="flex-start"
-          // _hover={{ bg: "gray.100" }}
         >
           <Image
             src={comment.profileImg}
@@ -159,7 +163,7 @@ const Comments = ({ videoId }) => {
           />
           <Box flex="1">
             <Text fontWeight="bold" fontSize="sm">
-              {comment.username} {/* Assuming you have a username field */}
+              {comment.username} 
             </Text>
             <Text fontSize="sm" color="gray.600" noOfLines={2}>
               {comment.desc}
@@ -178,8 +182,6 @@ const Comments = ({ videoId }) => {
         </Flex>
       ))}
     </Box>
-
-      
     </div>
   );
 };

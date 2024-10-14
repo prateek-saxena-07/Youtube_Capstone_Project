@@ -3,6 +3,8 @@ import { Button, Box, useColorMode} from '@chakra-ui/react';
 import { IoSunnyOutline } from "react-icons/io5";
 import { IoMoonSharp } from "react-icons/io5";
 
+//component to change background theme using onclick of button
+
 const ColorModeToggleButton = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
